@@ -32,7 +32,7 @@
 //
 //
 //
-//void PrintPerfectNumbers1toN(int number) {
+//void PrintIsPerfectNumber(int number) {
 //
 //
 //	if (IsPerfectNumber(number))
@@ -49,7 +49,7 @@
 //{
 //	int number = ReadPositiveNumber("Please Enter a Number!");
 //
-//	PrintPerfectNumbers1toN(number);
+//	PrintIsPerfectNumber(number);
 //	return 0;
 //
 //}

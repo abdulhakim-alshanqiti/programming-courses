@@ -33,5 +33,17 @@
     <ClCompile Include="4.cpp">
       <Filter>Source Files\course 5</Filter>
     </ClCompile>
+    <ClCompile Include="5.cpp">
+      <Filter>Source Files\course 5</Filter>
+    </ClCompile>
+    <ClCompile Include="6.cpp">
+      <Filter>Source Files\course 5</Filter>
+    </ClCompile>
+    <ClCompile Include="7.cpp">
+      <Filter>Source Files\course 5</Filter>
+    </ClCompile>
+    <ClCompile Include="8.cpp">
+      <Filter>Source Files\course 5</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
