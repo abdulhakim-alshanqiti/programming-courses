@@ -17,25 +17,29 @@ int ReadPositiveNumber(string message) {
 
 }
 
-int ReverseNumber(int number) {
-	int remainder = 0, reversed_number = 0;
+int DigitFrequency(int number, short digitToCheck) {
+
+
+	int remainder = 0, frequency = 0;
 
 	while (number > 0) {
 		remainder = number % 10;
-		number = number / 10; // if the divison is bettwen 1 and 0 for example 0.3,0.7 etc the compiler will make the result 0 because the result is stored in an integer so it truncates the decimals 0.4 -> 0
+		number /= 10;
 
-		reversed_number = reversed_number * 10 + remainder;
-		cout << reversed_number << endl;
-
+		if (remainder == digitToCheck)
+			frequency++;
 
 	}
 
-	return reversed_number;
+	return frequency;
 }
+
 int main()
 {
 	int number = ReadPositiveNumber("Please Enter a Number");
+	short digit = ReadPositiveNumber("Please Enter a Number"); // short is the smallest container we can get for this number that would be one number bettwen 0-9
 
+	cout << "Digit " << digit << " frequency is " << DigitFrequency(number, digit) << " in the number: " << number << endl;
 
 	return 0;
 }
