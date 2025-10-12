@@ -34,12 +34,29 @@
 //	return frequency;
 //}
 //
+//void NumbersFrequency(int number) {
+//
+//	for (int i = 0, short frequency = 0; i <= 9; i++) {
+//
+//		frequency = DigitFrequency(number, i);
+//
+//		if (frequency > 0)
+//		{
+//			cout << "Digit " << i << " frequency is " << frequency << endl;
+//		}
+//	}
+//
+//
+//}
+//
+//
+//
+//
 //int main()
 //{
 //	int number = ReadPositiveNumber("Please Enter a Number");
-//	short digit = ReadPositiveNumber("Please Enter a Number"); // short is the smallest container we can get for this number that would be one number bettwen 0-9
 //
-//	cout << "Digit " << digit << " frequency is " << DigitFrequency(number, digit) << " in the number: " << number << endl;
+//	NumbersFrequency(number);
 //
 //	return 0;
 //}
