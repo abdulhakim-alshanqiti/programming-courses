@@ -33,7 +33,7 @@ vector<int> ReadArray(short length) {
 
 short CheckFrequncyInArray(vector<int> array, short number) {
 	short frequency = 0;
-	for (int i = 0; i <= array.size() - 1; i++) {
+	for (int i = 0; i < array.size(); i++) {
 
 		if (number == array[i]) {
 			frequency++;
@@ -46,8 +46,10 @@ short CheckFrequncyInArray(vector<int> array, short number) {
 }
 
 void PrintArray(vector<int> array) {
-	cout << " original array : ";
-	for (int i = 0; i <= array.size() - 1; i++) {
+	cout << "original array : ";
+
+
+	for (int i = 0; i < array.size(); i++) {
 
 		cout << array[i] << " ";
 
@@ -66,7 +68,7 @@ int main()
 	PrintArray(array);
 	short numberToCheck = ReadPositiveNumber("Enter The Number You Want To Check Its Frequncy");
 
-	cout << "the frequncy of the number" << numberToCheck << " : " << CheckFrequncyInArray(array, numberToCheck) << endl;
+	cout << "the frequncy of the number " << numberToCheck << " is : " << CheckFrequncyInArray(array, numberToCheck) << endl;
 
 	return 0;
 }
