@@ -57,6 +57,11 @@ int SumOfArray(vector<int> array) {
 	return sum;
 }
 
+float AverageOfArray(vector<int> array) {
+
+	return (float)SumOfArray(array) / array.size();
+}
+
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -67,7 +72,7 @@ int main()
 
 	PrintArray(array);
 
-	cout << "the sum of array elements is " << SumOfArray(array) << endl;
+	cout << "the average of array elements is " << AverageOfArray(array) << endl;
 
 	return 0;
 }
