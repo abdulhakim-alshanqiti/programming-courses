@@ -49,6 +49,22 @@ void PrintArray(vector<int> array) {
 	cout << endl;
 }
 
+int MaxInArray(vector<int> array) {
+	cout << "original array : ";
+
+	int max = 0;
+	for (int i = 0; i < array.size(); i++) {
+
+		if (array[i] > max) {
+			max = array[i];
+		}
+
+
+	}
+	return max;
+
+}
+
 int main()
 {
 
@@ -58,6 +74,8 @@ int main()
 	vector<int> array = FillArrayWithRandomNumbers(lengthOfArray);
 
 	PrintArray(array);
+
+	cout << "the max number is " << MaxInArray(array) << endl;
 
 	return 0;
 }
