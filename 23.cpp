@@ -52,7 +52,7 @@
 //int main()
 //{
 //
-//
+//	srand((unsigned)time(NULL));
 //	short lengthOfArray = ReadPositiveNumber("Enter How Many Elements You Want");
 //
 //	vector<int> array = FillArrayWithRandomNumbers(lengthOfArray);
