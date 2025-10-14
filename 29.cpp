@@ -3,6 +3,24 @@
 //#include <string>
 //#include <vector>
 //using namespace std;
+//
+//enum enPrimeNotPrime {
+//	Prime = 1, NotPrime = 2
+//};
+//
+//
+//enPrimeNotPrime CheckPrime(int number) {
+//	int M = number / 2;
+//
+//	for (int i = 2; i <= M; i++) {
+//		if (number % i == 0)
+//			return enPrimeNotPrime::NotPrime;
+//
+//	}
+//	return enPrimeNotPrime::Prime;
+//}
+//
+//
 //int RandomNumber(int from, int to) {
 //	return rand() % (to - from + 1) + from;
 //}
@@ -37,6 +55,11 @@
 //
 //
 //void PrintArray(vector<int> array, string message) {
+//
+//	if (array.size() == 0) {
+//		message += " Empty";
+//	}
+//
 //	cout << message;
 //
 //
@@ -47,6 +70,9 @@
 //
 //	}
 //	cout << endl;
+//
+//
+//
 //}
 //
 //int SumOfArray(vector<int> array) {
@@ -62,10 +88,14 @@
 //	return (float)SumOfArray(array) / array.size();
 //}
 //
-//vector<int> CopyArray(vector<int> array) {
+//vector<int> CopyOnlyPrimeNumbers(vector<int> array) {
 //	vector<int> copy;
 //	for (int i = 0; i < array.size(); i++) {
-//		copy.push_back(array[i]);
+//
+//		if (CheckPrime(array[i]) == enPrimeNotPrime::Prime)
+//			copy.push_back(array[i]);
+//
+//
 //	}
 //
 //	return copy;
@@ -82,7 +112,7 @@
 //
 //	PrintArray(array, "Array 1 items : ");
 //
-//	vector<int> array2 = CopyArray(array);
+//	vector<int> array2 = CopyOnlyPrimeNumbers(array);
 //
 //
 //	PrintArray(array2, "Array 2 items : ");
