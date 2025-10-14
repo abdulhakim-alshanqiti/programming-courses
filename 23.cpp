@@ -3,6 +3,9 @@
 //#include <string>
 //#include <vector>
 //using namespace std;
+//int RandomNumber(int from, int to) {
+//	return rand() % (to - from + 1) + from;
+//}
 //
 //int ReadPositiveNumber(string message) {
 //	int number = 0;
@@ -17,33 +20,21 @@
 //
 //}
 //
-//vector<int> ReadArray(short length) {
+//vector<int> FillArrayWithRandomNumbers(short length) {
 //
 //	vector<int> numbers;
 //
 //
 //	for (int i = 1; i <= length; i++) {
-//		string message = "Enter Item Number [" + to_string(i) + "] : ";
 //
-//		numbers.push_back(ReadPositiveNumber(message));
+//		short random = RandomNumber(1, 100);
+//		numbers.push_back(random);
 //	}
 //
 //	return numbers;
 //}
 //
-//short CheckFrequncyInArray(vector<int> array, short number) {
-//	short frequency = 0;
-//	for (int i = 0; i < array.size(); i++) {
 //
-//		if (number == array[i]) {
-//			frequency++;
-//		}
-//
-//
-//	}
-//
-//	return frequency;
-//}
 //
 //void PrintArray(vector<int> array) {
 //	cout << "original array : ";
@@ -61,14 +52,12 @@
 //int main()
 //{
 //
+//
 //	short lengthOfArray = ReadPositiveNumber("Enter How Many Elements You Want");
 //
-//	vector<int> array = ReadArray(lengthOfArray);
+//	vector<int> array = FillArrayWithRandomNumbers(lengthOfArray);
 //
 //	PrintArray(array);
-//	short numberToCheck = ReadPositiveNumber("Enter The Number You Want To Check Its Frequncy");
-//
-//	cout << "the frequncy of the number " << numberToCheck << " is : " << CheckFrequncyInArray(array, numberToCheck) << endl;
 //
 //	return 0;
 //}
