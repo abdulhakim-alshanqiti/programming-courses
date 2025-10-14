@@ -49,19 +49,12 @@
 //	cout << endl;
 //}
 //
-//int MaxInArray(vector<int> array) {
-//
-//	int max = 0;
+//int SumOfArray(vector<int> array) {
+//	int sum = 0;
 //	for (int i = 0; i < array.size(); i++) {
-//
-//		if (array[i] > max) {
-//			max = array[i];
-//		}
-//
-//
+//		sum += array[i];
 //	}
-//	return max;
-//
+//	return sum;
 //}
 //
 //int main()
@@ -74,7 +67,7 @@
 //
 //	PrintArray(array);
 //
-//	cout << "the max number is " << MaxInArray(array) << endl;
+//	cout << "the sum of array elements is " << SumOfArray(array) << endl;
 //
 //	return 0;
 //}
