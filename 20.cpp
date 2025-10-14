@@ -17,7 +17,7 @@
 //}
 //
 //char RandomCharechter(enCharTypes type) {
-//	int randomChar = 0;
+//	
 //	switch (type) {
 //
 //	case enCharTypes::CapitalLetter:
