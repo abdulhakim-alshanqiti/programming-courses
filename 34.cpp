@@ -4,54 +4,12 @@
 #include <vector>
 using namespace std;
 
-enum enCharTypes {
-	SmallLetter = 1, CapitalLetter = 2, SpecialChar = 3, Digit = 4
-};
+
 int RandomNumber(int from, int to) {
 	return rand() % (to - from + 1) + from;
 }
 
-char RandomCharechter(enCharTypes type) {
 
-	switch (type) {
-
-	case enCharTypes::CapitalLetter:
-		return RandomNumber('A', 'Z');
-
-	case enCharTypes::SmallLetter:
-		return RandomNumber('a', 'z');
-
-	case enCharTypes::SpecialChar:
-		return RandomNumber('!', '/');
-
-	case enCharTypes::Digit:
-		return RandomNumber('1', '9');
-
-	}
-
-
-}
-
-string GenerateWord(enCharTypes type, short length) {
-	string word = "";
-	for (int i = 1; i <= length; i++) {
-		word += RandomCharechter(type);
-	}
-	return word;
-}
-
-
-string GenerateKey() {
-	string key = "";
-
-
-	key = GenerateWord(enCharTypes::CapitalLetter, 4);
-	key += "-" + GenerateWord(enCharTypes::CapitalLetter, 4);
-	key += "-" + GenerateWord(enCharTypes::CapitalLetter, 4);
-	key += "-" + GenerateWord(enCharTypes::CapitalLetter, 4);
-
-	return key;
-}
 
 
 
@@ -68,15 +26,15 @@ int ReadPositiveNumber(string message) {
 
 }
 
-vector<string> FillArrayWithKeys(short length) {
+vector<int> FillArrayWithRandomNumbers(short length) {
 
-	vector<string> numbers;
+	vector<int> numbers;
 
 
 	for (int i = 1; i <= length; i++) {
 
-
-		numbers.push_back(GenerateKey());
+		short random = RandomNumber(1, 100);
+		numbers.push_back(random);
 	}
 
 	return numbers;
@@ -84,18 +42,18 @@ vector<string> FillArrayWithKeys(short length) {
 
 
 
-void PrintArray(vector<string> array, string message) {
+void PrintArray(vector<int> array, string message) {
 
 	if (array.size() == 0) {
 		message += " Empty";
 	}
 
-	cout << message << endl;
+	cout << message;
 
 
 	for (int i = 0; i < array.size(); i++) {
 
-		cout << "Array[" << i << "]: " << array[i] << endl;
+		cout << array[i] << "\t";
 
 
 	}
@@ -106,6 +64,36 @@ void PrintArray(vector<string> array, string message) {
 }
 
 
+int SearchForNumberInArray(vector<int> array, short number) {
+
+
+	for (int i = 0; i < array.size(); i++) {
+
+		if (array[i] == number) {
+
+			return i;
+		}
+
+	}
+
+	return -1;
+
+
+
+
+
+
+}
+
+void PrintResultOfSearch(int number, int index) {
+	if (index == -1) {
+		cout << "the Number You are looking for is :" +
+			to_string(number) << "\nI couldn't find it " << endl;
+	}
+	else {
+		cout << "the Number You are looking for is :" + to_string(number) << "\nis at position: " + to_string(index) + "\nand its order is " + to_string(index + 1) << endl;
+	}
+}
 
 
 int main()
@@ -114,12 +102,16 @@ int main()
 
 	short lengthOfArray = ReadPositiveNumber("Enter How Many Elements You Want");
 
-	vector<string> array = FillArrayWithKeys(lengthOfArray);
+	vector<int> array = FillArrayWithRandomNumbers(lengthOfArray);
 
-	PrintArray(array, "Array 1: \t");
+	PrintArray(array, "Array 1 Elements: \n");
+
+	short numberToSearch = ReadPositiveNumber("Enter the Number You Want to Search For");
 
 
+	int number_Index = SearchForNumberInArray(array, numberToSearch);
 
+	PrintResultOfSearch(numberToSearch, number_Index);
 
 	return 0;
 }
