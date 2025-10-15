@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="32.cpp" />
     <ClCompile Include="33.cpp" />
+    <ClCompile Include="34.cpp" />
     <ClCompile Include="code\course_5\1.cpp" />
     <ClCompile Include="code\course_5\10.cpp" />
     <ClCompile Include="code\course_5\11.cpp" />
