@@ -37,6 +37,17 @@ vector<int> FillArrayWithRandomNumbers(short length) {
 	return numbers;
 }
 
+vector<int> FillArrayWith1toN(short length) {
+
+	vector<int> numbers;
+
+
+	for (int i = 1; i <= length; i++) {
+		numbers.push_back(i);
+	}
+
+	return numbers;
+}
 
 
 void PrintArray(vector<int> array, string message) {
@@ -69,15 +80,38 @@ int SumOfArray(vector<int> array) {
 }
 
 
+void Swap(int& a, int& b) {
 
-vector<int> SumOfTwoArrays(vector<int> array, vector<int> array2) {
-	vector<int> sum;
+	int temp = a;
+
+	a = b;
+
+	b = temp;
+
+}
+void ShuffleArray(vector<int>& array) {
+
 
 	for (int i = 0; i < array.size(); i++) {
-		sum.push_back(array[i] + array2[i]);
+		int randomItem1 = RandomNumber(0, array.size() - 1);
+
+		int randomItem2 = RandomNumber(0, array.size() - 1);
+
+		Swap(array[randomItem1], array[randomItem2]);
 	}
 
-	return sum;
+}
+
+vector<int> ReverseArray(vector<int> array) {
+	vector<int> reversedArray;
+
+
+	for (int i = 0; i <= array.size() - 1; i++) {
+		reversedArray.push_back(array[(array.size() - 1) - i]);
+	}
+
+
+	return reversedArray;
 }
 
 int main()
@@ -88,15 +122,10 @@ int main()
 
 	vector<int> array = FillArrayWithRandomNumbers(lengthOfArray);
 
-	PrintArray(array, "Array 1 items : \t");
+	PrintArray(array, "Array 1: \t");
 
-	vector<int> array2 = FillArrayWithRandomNumbers(lengthOfArray);
-
-
-	PrintArray(array2, "Array 2 items : \t");
+	PrintArray(ReverseArray(array), "Array 2: \t");
 
 
-	vector<int> array3 = SumOfTwoArrays(array, array2);
-	PrintArray(array3, "Array 1 + Array 2: \t");
 	return 0;
 }
