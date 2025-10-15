@@ -51,73 +51,82 @@
     <ClCompile Include="code\course_5\11.cpp">
       <Filter>Source Files\course 5</Filter>
     </ClCompile>
+    <ClCompile Include="34.cpp">
+      <Filter>Source Files\course 5</Filter>
+    </ClCompile>
+    <ClCompile Include="35.cpp">
+      <Filter>Source Files\course 5</Filter>
+    </ClCompile>
     <ClCompile Include="code\course_5\12.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\13.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\14.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\15.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\16.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\17.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\18.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\19.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\20.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\21.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\22.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\23.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\24.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\25.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\26.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\27.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\28.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\29.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\30.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="code\course_5\31.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="32.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
     <ClCompile Include="33.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\course 5</Filter>
     </ClCompile>
-    <ClCompile Include="34.cpp">
+    <ClCompile Include="36.cpp">
+      <Filter>Source Files\course 5</Filter>
+    </ClCompile>
+    <ClCompile Include="37.cpp">
       <Filter>Source Files\course 5</Filter>
     </ClCompile>
   </ItemGroup>
