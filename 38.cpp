@@ -90,6 +90,18 @@
 //	return numbers;
 //}
 //
+//vector<int> CopyOnlyOddElements(vector<int> array) {
+//	vector<int> copy;
+//
+//	for (int i = 0; i < array.size(); i++) {
+//		if (array[i] % 2 != 0) {
+//			AddArrayElement(copy, array[i]);
+//		}
+//	}
+//
+//	return copy;
+//}
+//
 //int main()
 //{
 //	srand((unsigned)time(NULL));
@@ -99,7 +111,7 @@
 //
 //	PrintArray(array, "Array 1 Elements: \n");
 //
-//	vector<int> array2 = CopyArray(array);
+//	vector<int> array2 = CopyOnlyOddElements(array);
 //	PrintArray(array2, "Array 2 Elements: \n");
 //
 //

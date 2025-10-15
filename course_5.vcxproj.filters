@@ -129,5 +129,8 @@
     <ClCompile Include="37.cpp">
       <Filter>Source Files\course 5</Filter>
     </ClCompile>
+    <ClCompile Include="38.cpp">
+      <Filter>Source Files\course 5</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
