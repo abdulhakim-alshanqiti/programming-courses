@@ -138,5 +138,14 @@
     <ClCompile Include="40.cpp">
       <Filter>Source Files\course 5</Filter>
     </ClCompile>
+    <ClCompile Include="41.cpp">
+      <Filter>Source Files\course 5</Filter>
+    </ClCompile>
+    <ClCompile Include="42.cpp">
+      <Filter>Source Files\course 5</Filter>
+    </ClCompile>
+    <ClCompile Include="43.cpp">
+      <Filter>Source Files\course 5</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

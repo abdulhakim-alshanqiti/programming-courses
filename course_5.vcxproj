@@ -132,6 +132,9 @@
     <ClCompile Include="38.cpp" />
     <ClCompile Include="39.cpp" />
     <ClCompile Include="40.cpp" />
+    <ClCompile Include="41.cpp" />
+    <ClCompile Include="42.cpp" />
+    <ClCompile Include="43.cpp" />
     <ClCompile Include="code\course_5\1.cpp" />
     <ClCompile Include="code\course_5\10.cpp" />
     <ClCompile Include="code\course_5\11.cpp" />
