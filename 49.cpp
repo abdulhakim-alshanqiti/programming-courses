@@ -4,30 +4,21 @@
 //#include <vector>
 //#include <cmath>
 //using namespace std;
-//
 //float GetFractionPart(float number) {
 //	return number - int(number);
 //}
-//float myRound(float number) {
-//
-//	int intPart = int(number);
-//	float fractionPart = GetFractionPart(number);
-//
-//	if (abs(fractionPart) >= 0.5)
-//	{
 //
 //
+//
+//float myCeil(float number) {
+//
+//	if (abs(GetFractionPart(number)) > 0)
 //		if (number >= 0)
-//			return ++intPart;
+//			return int(number) + 1;
 //		else
-//			return --intPart;
-//
-//	}
+//			return int(number);
 //	else
-//	{
-//		return intPart;
-//
-//	}
+//		return number;
 //}
 //
 //float ReadNumber(string message) {
@@ -44,8 +35,8 @@
 //{
 //	float number = ReadNumber("enter a float");
 //
-//	cout << myRound(number) << endl;
-//	cout << round(number) << endl << endl;
+//	cout << myCeil(number) << endl;
+//	cout << ceil(number) << endl << endl;
 //
 //
 //	return 0;
