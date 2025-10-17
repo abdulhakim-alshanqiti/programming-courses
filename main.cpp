@@ -185,6 +185,9 @@ void PrintGameInfo(stGameInfo gameInfo) {
 }
 
 void StartGameLoop() {
+	system("cls");
+	system("color 0F");
+
 	int rounds = ReadNumberInRange("How Many Rounds? pick from 1 to 10", 1, 10);
 	stGameInfo GameInfo;
 	GameInfo.rounds = rounds;
@@ -206,7 +209,7 @@ void StartGameLoop() {
 	cout << "Do you Want To Play Again? y/n" << endl;
 	cin >> YesOrNo;
 
-	if (YesOrNo == 'y') {
+	if (YesOrNo == ('y' || 'Y')) {
 		StartGameLoop();
 	}
 
