@@ -19,6 +19,9 @@
     <Filter Include="Source Files\course 5\project_1">
       <UniqueIdentifier>{3532bfee-0c61-4216-82cc-b175d90f0760}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\course 5\project_2">
+      <UniqueIdentifier>{928181a3-4700-459a-89ff-b55ab7b68237}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\course_5\1.cpp">
@@ -171,8 +174,11 @@
     <ClCompile Include="50.cpp">
       <Filter>Source Files\course 5</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="project_1.cpp">
       <Filter>Source Files\course 5\project_1</Filter>
+    </ClCompile>
+    <ClCompile Include="project_2.cpp">
+      <Filter>Source Files\course 5\project_2</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
