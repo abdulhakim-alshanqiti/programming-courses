@@ -24,6 +24,7 @@
     <ProjectGuid>{a79a90eb-783d-430f-aaf5-449d99ec8ae4}</ProjectGuid>
     <RootNamespace>course5</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>courses</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -123,25 +124,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="32.cpp" />
-    <ClCompile Include="33.cpp" />
-    <ClCompile Include="34.cpp" />
-    <ClCompile Include="35.cpp" />
-    <ClCompile Include="36.cpp" />
-    <ClCompile Include="37.cpp" />
-    <ClCompile Include="38.cpp" />
-    <ClCompile Include="39.cpp" />
-    <ClCompile Include="40.cpp" />
-    <ClCompile Include="41.cpp" />
-    <ClCompile Include="42.cpp" />
-    <ClCompile Include="43.cpp" />
-    <ClCompile Include="44.cpp" />
-    <ClCompile Include="45.cpp" />
-    <ClCompile Include="46.cpp" />
-    <ClCompile Include="47.cpp" />
-    <ClCompile Include="48.cpp" />
-    <ClCompile Include="49.cpp" />
-    <ClCompile Include="50.cpp" />
+    <ClCompile Include="code\course_5\32.cpp" />
+    <ClCompile Include="code\course_5\33.cpp" />
+    <ClCompile Include="code\course_5\34.cpp" />
+    <ClCompile Include="code\course_5\35.cpp" />
+    <ClCompile Include="code\course_5\36.cpp" />
+    <ClCompile Include="code\course_5\37.cpp" />
+    <ClCompile Include="code\course_5\38.cpp" />
+    <ClCompile Include="code\course_5\39.cpp" />
+    <ClCompile Include="code\course_5\40.cpp" />
+    <ClCompile Include="code\course_5\41.cpp" />
+    <ClCompile Include="code\course_5\42.cpp" />
+    <ClCompile Include="code\course_5\43.cpp" />
+    <ClCompile Include="code\course_5\44.cpp" />
+    <ClCompile Include="code\course_5\45.cpp" />
+    <ClCompile Include="code\course_5\46.cpp" />
+    <ClCompile Include="code\course_5\47.cpp" />
+    <ClCompile Include="code\course_5\48.cpp" />
+    <ClCompile Include="code\course_5\49.cpp" />
+    <ClCompile Include="code\course_5\50.cpp" />
     <ClCompile Include="code\course_5\1.cpp" />
     <ClCompile Include="code\course_5\10.cpp" />
     <ClCompile Include="code\course_5\11.cpp" />
@@ -173,8 +174,8 @@
     <ClCompile Include="code\course_5\8.cpp" />
     <ClCompile Include="code\course_5\9.cpp" />
     <ClCompile Include="code\course_5\17.cpp" />
-    <ClCompile Include="project_1.cpp" />
-    <ClCompile Include="project_2.cpp" />
+    <ClCompile Include="code\course_5\Projects\project_1.cpp" />
+    <ClCompile Include="code\course_5\Projects\project_2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

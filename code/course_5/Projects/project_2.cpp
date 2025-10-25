@@ -8,27 +8,36 @@ enum enPassFail {
 enum enOpType {
 	Add = 1, Subtract = 2, Multiply = 3, Divide = 4, MixOpType = 5
 };
+string OperationName(enOpType op) {
+	string names[5] = { "Add","Subtract","Multiply","Divide","Mix" };
+
+	return names[op - 1];
+}
 enum enDifficulty {
 	Easy = 1, Medium = 2, Hard = 3, MixDifficulty = 4
 };
-struct stGameSettings {
-	int totalQuestions = 0;
-	enOpType opType = MixOpType;
-	enDifficulty difficulty = MixDifficulty;
-};
-struct stQuestionInfo {
-	int number = 0;
-	int playerAnswer = 0;
-	int correctAnswer = 0;
-	int number1 = 0;
-	int number2 = 0;
+string DifficultyName(enDifficulty difficulty) {
+	string names[4] = { "Easy","Medium","Hard","Mix" };
+
+	return names[difficulty - 1];
+}
+
+struct stQuestion {
+
+	short number = 0;
+	short playerAnswer = 0;
+	short correctAnswer = 0;
+	short number1 = 0;
+	short number2 = 0;
 	enOpType opType = MixOpType;
 	enPassFail PassFail = Pass;
 };
-struct stGameResults {
-	int totalQuestions = 0;
-	int playerWinTimes = 0;
-	int playerLoseTimes = 0;
+struct stQuiz {
+	enOpType opType = MixOpType;
+	enDifficulty difficulty = MixDifficulty;
+	short totalQuestions = 0;
+	short playerWinTimes = 0;
+	short playerLoseTimes = 0;
 	enPassFail PassFail = Pass;
 };
 void ResetScreen() {
@@ -48,6 +57,7 @@ int ReadNumberInRange(string message, int from, int to) {
 	} while (number < from || number > to);	return number;
 
 }
+
 string Tabs(int number) {
 	string tabs = "";
 	for (int i = 1; i < number; i++)
@@ -62,7 +72,7 @@ string PassedOrFailed(enPassFail winner) {
 
 	return winnerNames[winner - 1];
 }
-void PrintQuestionExpression(stQuestionInfo Question) {
+void PrintQuestionExpression(stQuestion Question) {
 	switch (Question.opType)
 	{
 	case Add:
@@ -76,8 +86,8 @@ void PrintQuestionExpression(stQuestionInfo Question) {
 
 	}
 }
-int PlayerAnswer(stQuestionInfo question) {
-	PrintQuestionExpression(question);
+int PlayerAnswer() {
+
 
 	int answer = ReadNumberInRange("Whats the result of this expression?", INT_MIN, INT_MAX);
 
@@ -96,10 +106,10 @@ int CorrectAnswer(enOpType OperationType, int number1, int number2) {
 
 }
 
-enPassFail WhoWonTheGame(stGameResults GameResults) {
-	if (GameResults.playerWinTimes > GameResults.playerLoseTimes)
+enPassFail WhoWonTheQuiz(stQuiz QuizResults) {
+	if (QuizResults.playerWinTimes > QuizResults.playerLoseTimes)
 		return Pass;
-	else if (GameResults.playerWinTimes < GameResults.playerLoseTimes)
+	else if (QuizResults.playerWinTimes < QuizResults.playerLoseTimes)
 		return Fail;
 	else
 		return Pass;
@@ -120,7 +130,7 @@ void SetWinnerScreenColor(enPassFail PassOrFail) {
 }
 
 
-void PrintQuestionInfo(stQuestionInfo Question) {
+void PrintQuestionInfo(stQuestion Question) {
 
 	cout << "____________Question[" << Question.number << "]_____________\n\n";
 	PrintQuestionExpression(Question);
@@ -160,7 +170,7 @@ enOpType GetOperationType(enOpType OpType) {
 	}
 
 }
-string PrintQuestion(stQuestionInfo Question) {
+string PrintQuestion(stQuestion Question) {
 	switch (Question.opType)
 	{
 	case Add:
@@ -174,10 +184,10 @@ string PrintQuestion(stQuestionInfo Question) {
 
 	}
 }
-stQuestionInfo PlayQuestion(stGameSettings GameSettings, int number) {
-	stQuestionInfo Question;
-	enDifficulty difficulty = GetDifficulty(GameSettings.difficulty);
-	Question.opType = GetOperationType(GameSettings.opType);
+stQuestion PlayQuestion(stQuiz QuizSettings, int number) {
+	stQuestion Question;
+	enDifficulty difficulty = GetDifficulty(QuizSettings.difficulty);
+	Question.opType = GetOperationType(QuizSettings.opType);
 
 	Question.number1 = GenerateNumberByDifficulty(difficulty);
 	Question.number2 = GenerateNumberByDifficulty(difficulty);
@@ -186,64 +196,67 @@ stQuestionInfo PlayQuestion(stGameSettings GameSettings, int number) {
 
 
 	Question.number = number;
-	Question.playerAnswer = PlayerAnswer(Question);
-	Question.correctAnswer = CorrectAnswer(Question.opType, Question.number1, Question.number2);
+	PrintQuestionExpression(Question);
+	Question.playerAnswer = PlayerAnswer();
+	Question.correctAnswer =
+		CorrectAnswer(Question.opType, Question.number1, Question.number2);
 
 	Question.PassFail = IsTheAnswerCorrect(Question.playerAnswer, Question.correctAnswer);
 
 	return Question;
 }
 
-void AddQuestionToGameResults(stGameResults& GameResults, stQuestionInfo Question) {
+void AddQuestionToQuizResults(stQuiz& QuizResults, stQuestion Question) {
 	if (Question.PassFail == Pass)
-		GameResults.playerWinTimes++;
+		QuizResults.playerWinTimes++;
 	else
-		GameResults.playerLoseTimes++;
+		QuizResults.playerLoseTimes++;
 }
 
-void PrintGameOverScreen() {
+void PrintQuizOverScreen() {
 
 	cout << Tabs(2) + "--------------------------------\n\n" << endl;
 	cout << Tabs(2) + "    +++ G a m e O v e r +++ " << endl;
 	cout << Tabs(2) + "--------------------------------\n\n" << endl;
-	cout << Tabs(2) + "--------[ Game Results ]--------\n\n" << endl;
+	cout << Tabs(2) + "--------[ Quiz Results ]--------\n\n" << endl;
 	cout << Tabs(2) + "--------------------------------\n\n" << endl;
 }
-void ShowFinalGameResults(stGameResults GameResults) {
+void ShowFinalQuizResults(stQuiz QuizResults) {
 
 
-	SetWinnerScreenColor(GameResults.PassFail);
+	SetWinnerScreenColor(QuizResults.PassFail);
 
 
 
-	cout << Tabs(2) << "How Many Questions In The Quiz : " << GameResults.totalQuestions << " \n\n";
-	cout << Tabs(2) << "Player has Answered : " << GameResults.playerWinTimes << " questions \n\n";
-	cout << Tabs(2) << "Player has Failed : " << GameResults.playerLoseTimes << " questions \n\n";
-	cout << Tabs(2) << "The Result Of The Exam : " << PassedOrFailed(GameResults.PassFail) << " \n\n";
+	cout << Tabs(2) << "How Many Questions In The Quiz : " << QuizResults.totalQuestions << " \n\n";
+	cout << Tabs(2) << "The Quiz Difficulty : " << DifficultyName(QuizResults.difficulty) << " \n\n";
+	cout << Tabs(2) << "The Quiz Operation type : " << OperationName(QuizResults.opType) << " \n\n";
+	cout << Tabs(2) << "Player has Answered : " << QuizResults.playerWinTimes << " questions \n\n";
+	cout << Tabs(2) << "Player has Failed : " << QuizResults.playerLoseTimes << " questions \n\n";
+	cout << Tabs(2) << "The Result Of The Exam : " << PassedOrFailed(QuizResults.PassFail) << " \n\n";
 
 	cout << Tabs(2) << "--------------------------------\n\n";
 
 }
 
 
-stGameResults PlayGame(stGameSettings GameSettings) {
-
-	stGameResults GameResults;
-	GameResults.totalQuestions = GameSettings.totalQuestions;
+void PlayQuiz(stQuiz& Quiz) {
 
 
-	for (int i = 1; i <= GameSettings.totalQuestions; i++)
+
+
+	for (int i = 1; i <= Quiz.totalQuestions; i++)
 	{
-		cout << "Question [" << i << "/" << GameSettings.totalQuestions << "] " << endl;
+		cout << "Question [" << i << "/" << Quiz.totalQuestions << "] " << endl;
 
-		stQuestionInfo Question = PlayQuestion(GameSettings, i);
+		stQuestion Question = PlayQuestion(Quiz, i);
 
 		PrintQuestionInfo(Question);
-		AddQuestionToGameResults(GameResults, Question);
+		AddQuestionToQuizResults(Quiz, Question);
 
 	}
-	GameResults.PassFail = WhoWonTheGame(GameResults);
-	return GameResults;
+	Quiz.PassFail = WhoWonTheQuiz(Quiz);
+
 }
 int ReadHowManyQuestions() {
 	return ReadNumberInRange("How Many Questions?", 1, INT_MAX);
@@ -261,19 +274,26 @@ enOpType ReadOpTypeOfQuestions() {
 
 	return (enOpType)ReadNumberInRange(message, 1, 5);
 }
-void StartGameLoop() {
+
+void StartMathGame() {
+	stQuiz Quiz;
+	Quiz.totalQuestions = ReadHowManyQuestions();
+	Quiz.difficulty = ReadDifficultyOfQuestions();
+	Quiz.opType = ReadOpTypeOfQuestions();
+
+
+
+	PlayQuiz(Quiz);
+
+	PrintQuizOverScreen();
+	ShowFinalQuizResults(Quiz);
+}
+void StartGame() {
 	char playAgain = 'Y';
 
 	do {
 		ResetScreen();
-		stGameSettings GameSettings;
-		GameSettings.totalQuestions = ReadHowManyQuestions();
-		GameSettings.difficulty = ReadDifficultyOfQuestions();
-		GameSettings.opType = ReadOpTypeOfQuestions();
-		stGameResults GameResults = PlayGame(GameSettings);
-
-		PrintGameOverScreen();
-		ShowFinalGameResults(GameResults);
+		StartMathGame();
 
 
 		cout << "Do you Want To Play Again? y/n" << endl;
@@ -284,7 +304,7 @@ void StartGameLoop() {
 }
 int main() {
 	srand((unsigned)time(NULL));
-	StartGameLoop();
+	StartGame();
 
 	return 0;
 }
