@@ -55,4 +55,18 @@ namespace Output {
 	void Printl(string message) {
 		cout << message << endl;
 	}
+
+	void Print(int message) {
+		cout << message;
+	}
+	void Printl(int message) {
+		cout << message << endl;
+	}
+
+	void Print(float message) {
+		cout << message;
+	}
+	void Printl(float message) {
+		cout << message << endl;
+	}
 }

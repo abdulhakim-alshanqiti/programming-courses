@@ -185,6 +185,7 @@
     <ClCompile Include="courses\6\6.cpp" />
     <ClCompile Include="courses\6\7.cpp" />
     <ClCompile Include="courses\6\8.cpp" />
+    <ClCompile Include="courses\6\9.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Libs\NumbersLib.h" />
