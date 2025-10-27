@@ -222,7 +222,7 @@
 //		ShowFinalGameResults(GameResults);
 //
 //
-//		cout << "Do you Want To Play Again? y/n" << endl;
+//		cout << "Do you Want To Play Another Game? y/n" << endl;
 //		cin >> playAgain;
 //
 //	} while (playAgain == 'y' || playAgain == 'Y');

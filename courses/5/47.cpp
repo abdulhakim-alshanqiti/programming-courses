@@ -15,8 +15,6 @@
 //
 //	if (abs(fractionPart) >= 0.5)
 //	{
-//
-//
 //		if (number >= 0)
 //			return ++intPart;
 //		else
@@ -28,6 +26,8 @@
 //		return intPart;
 //
 //	}
+//
+//
 //}
 //
 //float ReadNumber(string message) {
