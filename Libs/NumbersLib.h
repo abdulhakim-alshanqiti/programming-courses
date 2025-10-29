@@ -49,10 +49,21 @@ namespace NumbersLib {
 
 namespace Output {
 
+	void Printl() {
+		cout << endl;
+	}
+
+
 	void Print(string message) {
 		cout << message;
 	}
 	void Printl(string message) {
+		cout << message << endl;
+	}
+	void Print(char message) {
+		cout << message;
+	}
+	void Printl(char message) {
 		cout << message << endl;
 	}
 
@@ -62,7 +73,12 @@ namespace Output {
 	void Printl(int message) {
 		cout << message << endl;
 	}
-
+	void Print(double message) {
+		cout << message;
+	}
+	void Printl(double message) {
+		cout << message << endl;
+	}
 	void Print(float message) {
 		cout << message;
 	}

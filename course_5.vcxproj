@@ -178,6 +178,14 @@
     <ClCompile Include="courses\5\Projects\project_1.cpp" />
     <ClCompile Include="courses\5\Projects\project_2.cpp" />
     <ClCompile Include="courses\6\1.cpp" />
+    <ClCompile Include="courses\6\10.cpp" />
+    <ClCompile Include="courses\6\11.cpp" />
+    <ClCompile Include="courses\6\12.cpp" />
+    <ClCompile Include="courses\6\13.cpp" />
+    <ClCompile Include="courses\6\14.cpp" />
+    <ClCompile Include="courses\6\15.cpp" />
+    <ClCompile Include="courses\6\16.cpp" />
+    <ClCompile Include="courses\6\17.cpp" />
     <ClCompile Include="courses\6\2.cpp" />
     <ClCompile Include="courses\6\3.cpp" />
     <ClCompile Include="courses\6\4.cpp" />

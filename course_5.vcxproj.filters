@@ -62,6 +62,14 @@
     <ClCompile Include="courses\6\7.cpp" />
     <ClCompile Include="courses\6\8.cpp" />
     <ClCompile Include="courses\6\9.cpp" />
+    <ClCompile Include="courses\6\10.cpp" />
+    <ClCompile Include="courses\6\11.cpp" />
+    <ClCompile Include="courses\6\12.cpp" />
+    <ClCompile Include="courses\6\13.cpp" />
+    <ClCompile Include="courses\6\14.cpp" />
+    <ClCompile Include="courses\6\15.cpp" />
+    <ClCompile Include="courses\6\16.cpp" />
+    <ClCompile Include="courses\6\17.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Libs\NumbersLib.h" />
