@@ -70,6 +70,10 @@
     <ClCompile Include="courses\6\15.cpp" />
     <ClCompile Include="courses\6\16.cpp" />
     <ClCompile Include="courses\6\17.cpp" />
+    <ClCompile Include="courses\6\18.cpp" />
+    <ClCompile Include="courses\6\19.cpp" />
+    <ClCompile Include="courses\6\20.cpp" />
+    <ClCompile Include="courses\6\21.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Libs\NumbersLib.h" />

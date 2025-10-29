@@ -10,6 +10,34 @@ namespace NumbersLib {
 	int RandomNumber(int from, int to) {
 		return rand() % (to - from + 1) + from;
 	}
+	string ReadString(string message) {
+		string input = "";
+
+		cout << message << endl;
+		cin >> input;
+
+		return input;
+	}
+	char ReadChar(string message) {
+		char input = ' ';
+
+		cout << message << endl;
+
+		cin >> input;
+
+		while (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "This is an Invalid Letter Please Enter A Valid Letter !" << endl;
+
+			cout << message << endl;
+			cin >> input;
+		}
+
+		return input;
+	}
+
 	int ReadNumber(string message) {
 		int number = 0;
 
