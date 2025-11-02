@@ -3,12 +3,20 @@
 
 
 using namespace std;
-namespace NumbersLib {
+namespace Numbers {
 	void SeedRandomness() {
 		srand((unsigned)time(NULL));
 	}
 	int RandomNumber(int from, int to) {
 		return rand() % (to - from + 1) + from;
+	}
+	string ReadWords(string message) {
+		string input = "";
+
+		cout << message << endl;
+		getline(cin, input);
+
+		return input;
 	}
 	string ReadString(string message) {
 		string input = "";

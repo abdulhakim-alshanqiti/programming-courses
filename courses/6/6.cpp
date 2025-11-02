@@ -2,7 +2,7 @@
 //#include <string>
 //#include "../../Libs/NumbersLib.h"
 //using namespace std;
-//using namespace NumbersLib;
+//using namespace Numbers;
 //using namespace Output;
 //
 //int add(int a, int b);
