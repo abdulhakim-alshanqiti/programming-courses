@@ -2,7 +2,7 @@
 //#include <vector>
 //#include "../../Libs/NumbersLib.h"
 //using namespace std;
-//using namespace Numbers;
+//using namespace Input;
 //using namespace Output;
 //vector<int> FillArrayWithRandomNumbers(short length) {
 //

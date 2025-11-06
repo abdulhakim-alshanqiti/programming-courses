@@ -1,7 +1,7 @@
 //#include <iostream>
 //#include<string>
 //#include "../../Libs/NumbersLib.h"
-//using namespace Numbers;
+//using namespace Input;
 //using namespace std;
 //
 //void PrintMatrix(int matrix[3][3], short rows, short columns) {

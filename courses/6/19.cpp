@@ -5,7 +5,7 @@
 //
 //using namespace std;
 //using namespace Output;
-//using namespace Numbers;
+//using namespace Input;
 //
 //
 //void PrintVector(vector <int>& vNumbers) {

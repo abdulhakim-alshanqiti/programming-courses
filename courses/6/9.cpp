@@ -3,7 +3,7 @@
 //#include<cmath>
 //#include "../../Libs/NumbersLib.h"
 //using namespace std;
-//using namespace Numbers;
+//using namespace Input;
 //using namespace Output;
 ////using namespace std;
 //void PrintfromMtoN(int M, int N) {

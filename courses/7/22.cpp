@@ -2,7 +2,7 @@
 //#include<string>
 //#include "../../Libs/NumbersLib.h"
 //#include <vector>
-//using namespace Numbers;
+//using namespace Input;
 //using namespace std;
 //
 //

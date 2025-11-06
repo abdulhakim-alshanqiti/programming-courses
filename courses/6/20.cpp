@@ -6,7 +6,7 @@
 //
 //using namespace std;
 //using namespace Output;
-//using namespace Numbers;
+//using namespace Input;
 //
 //
 //struct stEmployee

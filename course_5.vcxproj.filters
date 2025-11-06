@@ -129,6 +129,23 @@
     <ClCompile Include="courses\7\24.cpp" />
     <ClCompile Include="courses\7\25.cpp" />
     <ClCompile Include="courses\7\26.cpp" />
+    <ClCompile Include="courses\7\27.cpp" />
+    <ClCompile Include="courses\7\28.cpp" />
+    <ClCompile Include="courses\7\29.cpp" />
+    <ClCompile Include="courses\7\30.cpp" />
+    <ClCompile Include="courses\7\31.cpp" />
+    <ClCompile Include="courses\7\32.cpp" />
+    <ClCompile Include="courses\7\33.cpp" />
+    <ClCompile Include="courses\7\34.cpp" />
+    <ClCompile Include="courses\7\35.cpp" />
+    <ClCompile Include="courses\7\36.cpp" />
+    <ClCompile Include="courses\7\37.cpp" />
+    <ClCompile Include="courses\7\38.cpp" />
+    <ClCompile Include="courses\7\39.cpp" />
+    <ClCompile Include="courses\7\40.cpp" />
+    <ClCompile Include="courses\7\41.cpp" />
+    <ClCompile Include="courses\7\42.cpp" />
+    <ClCompile Include="courses\7\43.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Libs\NumbersLib.h" />
