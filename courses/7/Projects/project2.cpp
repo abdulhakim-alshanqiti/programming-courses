@@ -288,7 +288,7 @@ void AddNewClient() {
 	vClientsRecords.push_back(ReadClientRecord());
 	SaveClientsDataToFile(vClientsRecords);
 }
-void ChangeAmmountInAccount(string Message ,bool Deposit) {
+void ChangeAmmountInAccount(string Message ,bool change) {
 
 	string AccountId = ReadStringWS(Message);
 
@@ -300,18 +300,32 @@ void ChangeAmmountInAccount(string Message ,bool Deposit) {
 		AccountId = ReadStringWS(Message);
 	}
 
+
 	for (stClientRecord &ClientRecord : vClientsRecords) {
 	
 		if (ClientRecord.AccountId == AccountId)	{
-			PrintClientCard(ClientRecord);
-			double DepositAmmount = (double)ReadPositiveNumber("Please Enter The Ammount You Want To Deposit");
-			if (!Deposit) {
-				DepositAmmount *= -1;
-			}
+			PrintClientCard(ClientRecord);	
 
-			ClientRecord.AccountBalance = ClientRecord.AccountBalance + DepositAmmount;
-			Printl("The New Balance Ammount Is " + to_string(ClientRecord.AccountBalance));
-			break;
+			double ChangeAmmount =0;
+			if (change) {
+				ChangeAmmount = (double)ReadPositiveNumber("Please Enter The Ammount You Want To Deposit");
+
+			
+			}
+			else {
+				ChangeAmmount = (double)
+				ReadNumberInRange("Please Enter The Ammount You Want To WithDraw Must Be Less Than Or Equal To" + to_string(ClientRecord.AccountBalance), 1, ClientRecord.AccountBalance);
+				ChangeAmmount *= -1;
+
+			}
+			char AreYouSure = 'n';
+			AreYouSure = ReadChar("Are You Sure You Want To Perform This Action ?");
+			if (toupper(AreYouSure) == 'Y') {
+
+				ClientRecord.AccountBalance = ClientRecord.AccountBalance + ChangeAmmount;
+				Printl("The New Balance Ammount Is " + to_string(ClientRecord.AccountBalance));
+				break;
+			}
 		}
 
 	}
@@ -325,6 +339,7 @@ void ScreenTitle(string Name) {
 	PrintLine("-");
 	Printl("\t\t" + Name + " Screen");
 	PrintLine("-");
+
 }
 
 
@@ -446,19 +461,30 @@ void ShowTotalBalancesScreen() {
 		endl;
 
 	PrintLine();
+	double TotalBalances = 0.0;
 	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
-	for (stClientRecord& ClientRecord : vClientsRecords) {
 
-		{
+	if (vClientsRecords.size() == 0) 
+		Printl("\t\t\t\tNo Clients Are Available In The System !!");
+	
+	else {
+		for (stClientRecord& ClientRecord : vClientsRecords) {
+			TotalBalances += ClientRecord.AccountBalance;
+
 			cout
 				<< " | " << left << setw(15) << ClientRecord.AccountId
 				<< " | " << left << setw(22) << ClientRecord.Name
 				<< " | " << left << setw(22) << to_string(ClientRecord.AccountBalance) <<
 				endl;
+
+
+
 		}
-
-
 	}
+	
+	
+	PrintLine();
+	Printl("Total Balances : " + to_string(TotalBalances));
 }
 
 void GoBackToMainMenu() {
@@ -498,8 +524,6 @@ void GoToSubTransactionScreens(enTransactionMenuScreens Screen) {
 		GoBackToTransactionsMenu();
 		break;
 	case MainMenu:
-		system("cls");
-
 		ShowMainMenuScreen();
 		break;
 

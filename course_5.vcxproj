@@ -280,9 +280,15 @@
     <ClCompile Include="courses\7\9.cpp" />
     <ClCompile Include="courses\7\Projects\project.cpp" />
     <ClCompile Include="courses\7\Projects\project2.cpp" />
+    <ClCompile Include="courses\7\Projects\extra.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Libs\MyLib.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="courses\7\Projects\project.txt" />
+    <Text Include="courses\7\Projects\project2.txt" />
+    <Text Include="courses\7\Projects\extra.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
