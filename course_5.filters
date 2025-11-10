@@ -155,6 +155,7 @@
     <ClCompile Include="courses\7\50.cpp" />
     <ClCompile Include="courses\7\51.cpp" />
     <ClCompile Include="courses\7\Projects\project.cpp" />
+    <ClCompile Include="courses\7\Projects\project2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Libs\MyLib.h" />
