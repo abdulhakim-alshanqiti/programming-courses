@@ -151,7 +151,7 @@ void PrintClientCard(stClientRecord ClientRecord) {
 		<< "Pin Code :" << ClientRecord.PinCode << endl
 		<< "Name :" << ClientRecord.Name << endl
 		<< "Phone :" << ClientRecord.Phone << endl
-		<< "Account Balance  :" << ClientRecord.AccountBalance << endl;
+		<< "Account Balance  :" << to_string(ClientRecord.AccountBalance )<< endl;
 	PrintLine();
 }
 
@@ -288,6 +288,37 @@ void AddNewClient() {
 	vClientsRecords.push_back(ReadClientRecord());
 	SaveClientsDataToFile(vClientsRecords);
 }
+void ChangeAmmountInAccount(string Message ,bool Deposit) {
+
+	string AccountId = ReadStringWS(Message);
+
+	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
+
+	while (!DoesClientExistByAccountId(AccountId, vClientsRecords))
+	{
+		Printl("The Account ID Doesn't Exist \nPlease Make Sure You Entered The Correct Number");
+		AccountId = ReadStringWS(Message);
+	}
+
+	for (stClientRecord &ClientRecord : vClientsRecords) {
+	
+		if (ClientRecord.AccountId == AccountId)	{
+			PrintClientCard(ClientRecord);
+			double DepositAmmount = (double)ReadPositiveNumber("Please Enter The Ammount You Want To Deposit");
+			if (!Deposit) {
+				DepositAmmount *= -1;
+			}
+
+			ClientRecord.AccountBalance = ClientRecord.AccountBalance + DepositAmmount;
+			Printl("The New Balance Ammount Is " + to_string(ClientRecord.AccountBalance));
+			break;
+		}
+
+	}
+
+
+	SaveClientsDataToFile(vClientsRecords);
+}
 
 void ScreenTitle(string Name) {
 
@@ -391,35 +422,43 @@ void ShowFindClientScreen() {
 
 }
 void ShowDepositScreen() {
-	ScreenTitle("Depoist");
+	ScreenTitle("Deposit");
 	string Message = "Please Enter The Account ID You Want To Deposit To";
+	ChangeAmmountInAccount(Message,true);
 
-	string AccountId = ReadStringWS(Message);
 
+}
+
+void ShowWithDrawScreen() {
+	ScreenTitle("WithDraw");
+	string Message = "Please Enter The Account ID You Want To WithDraw From";
+	ChangeAmmountInAccount(Message, false);
+
+}
+
+void ShowTotalBalancesScreen() {
+	ScreenTitle("Total Balances");
+
+	cout
+		<< " | " << left << setw(15) << "Account ID"
+		<< " | " << left << setw(22) << "Name"
+		<< " | " << left << setw(22) << "Balance" <<
+		endl;
+
+	PrintLine();
 	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
-	while (!DoesClientExistByAccountId(AccountId,vClientsRecords))
-	{
-		Printl("The Account ID Doesn't Exist \nPlease Make Sure You Entered The Correct Number");
-		AccountId = ReadStringWS(Message);
-	}
+	for (stClientRecord& ClientRecord : vClientsRecords) {
 
-
-
-	for (stClientRecord ClientRecord : vClientsRecords) {
-		if (ClientRecord.AccountId == AccountId)
 		{
-			double DepositAmmount = (double)ReadPositiveNumber("Please Enter The Ammount You Want To Deposit");
-			PrintClientCard(ClientRecord);
-			ClientRecord.AccountBalance = ClientRecord.AccountBalance + DepositAmmount;
-			Printl("The New Balance Ammount Is " + to_string(ClientRecord.AccountBalance));
-
+			cout
+				<< " | " << left << setw(15) << ClientRecord.AccountId
+				<< " | " << left << setw(22) << ClientRecord.Name
+				<< " | " << left << setw(22) << to_string(ClientRecord.AccountBalance) <<
+				endl;
 		}
 
+
 	}
-
-
-
-
 }
 
 void GoBackToMainMenu() {
@@ -442,21 +481,20 @@ void GoBackToTransactionsMenu() {
 void GoToSubTransactionScreens(enTransactionMenuScreens Screen) {
 	switch (Screen)
 	{
-		case Deposit:
+	case Deposit:
 		system("cls");
 		ShowDepositScreen();
 		GoBackToTransactionsMenu();
 		break;
 
-		case Withdraw:
+	case Withdraw:
 		system("cls");
-		ScreenTitle("WithDraw");
+		ShowWithDrawScreen();
 		GoBackToTransactionsMenu();
 		break;
 	case TotalBalances:
 		system("cls");
-		ScreenTitle("Total Balances");
-
+		ShowTotalBalancesScreen();
 		GoBackToTransactionsMenu();
 		break;
 	case MainMenu:
@@ -510,8 +548,6 @@ void GoToMainMenuScreens(enMainMenuScreens Screen) {
 		system("cls");
 
 		ShowTransactionsScreen();
-
-		//GoBackToMainMenu();
 		break;
 	case Exit:
 		system("cls");
