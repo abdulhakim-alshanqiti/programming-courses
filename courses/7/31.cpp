@@ -1,6 +1,6 @@
 //#include <iostream>
 //#include<string>
-//#include "../../Libs/NumbersLib.h"
+//#include "../../Libs/MyLib.h"
 //using namespace Input;
 //using namespace Strings;
 //using namespace std;
@@ -40,7 +40,7 @@
 //
 //
 //int main() {
-//	string MyString = ReadWords("Write a Sentence");
+//	string MyString = ReadStringWS("Write a Sentence");
 //
 //	char Letter = ReadChar("What Letter You Want To Search For ?");
 //

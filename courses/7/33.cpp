@@ -1,6 +1,6 @@
 //#include <iostream>
 //#include<string>
-//#include "../../Libs/NumbersLib.h"
+//#include "../../Libs/MyLib.h"
 //using namespace Input;
 //using namespace Strings;
 //using namespace std;
@@ -23,7 +23,7 @@
 //}
 //int main() {
 //
-//	string String = ReadWords("Pick a String");
+//	string String = ReadStringWS("Pick a String");
 //	int result = CountVowelsInString(String);
 //
 //	cout << "The Number Of Vowels In The String \"" + String + "\"  : " << result;

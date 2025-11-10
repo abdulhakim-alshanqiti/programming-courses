@@ -1,11 +1,11 @@
 //#include<iostream>
-//#include "../../Libs/NumbersLib.h"
+//#include "../../Libs/MyLib.h"
 //using namespace std;
 //
 //
 //int main() {
-//	NumbersLib::SeedRandomness();
-//	cout << NumbersLib::RandomNumber(1, 10) << endl;
+//	MyLib::SeedRandomness();
+//	cout << MyLib::RandomNumber(1, 10) << endl;
 //
 //	return 0;
 //}

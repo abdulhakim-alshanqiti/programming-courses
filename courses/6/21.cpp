@@ -1,7 +1,7 @@
 //#include<iostream>
 //#include<vector>
 //#include<string>
-//#include"../../Libs/NumbersLib.h"  
+//#include"../../Libs/MyLib.h"  
 //
 //using namespace std;
 //using namespace Output;
@@ -22,8 +22,8 @@
 //	while (ReadMore == 'Y' || ReadMore == 'y') {
 //		system("cls");
 //
-//		tempEmployee.FirstName = ReadString("Please Enter Employee First Name");
-//		tempEmployee.LastName = ReadString("Please Enter Employee Last Name");
+//		tempEmployee.FirstName = ReadStringWS("Please Enter Employee First Name");
+//		tempEmployee.LastName = ReadStringWS("Please Enter Employee Last Name");
 //		tempEmployee.Sallary = ReadNumber("Please Enter Employee Sallary");
 //
 //

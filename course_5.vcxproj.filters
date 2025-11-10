@@ -146,8 +146,17 @@
     <ClCompile Include="courses\7\41.cpp" />
     <ClCompile Include="courses\7\42.cpp" />
     <ClCompile Include="courses\7\43.cpp" />
+    <ClCompile Include="courses\7\44.cpp" />
+    <ClCompile Include="courses\7\45.cpp" />
+    <ClCompile Include="courses\7\46.cpp" />
+    <ClCompile Include="courses\7\47.cpp" />
+    <ClCompile Include="courses\7\48.cpp" />
+    <ClCompile Include="courses\7\49.cpp" />
+    <ClCompile Include="courses\7\50.cpp" />
+    <ClCompile Include="courses\7\51.cpp" />
+    <ClCompile Include="courses\7\Projects\project.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Libs\NumbersLib.h" />
+    <ClInclude Include="Libs\MyLib.h" />
   </ItemGroup>
 </Project>

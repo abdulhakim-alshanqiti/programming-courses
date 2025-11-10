@@ -1,13 +1,13 @@
 //#include <iostream>
 //#include<string>
 //#include<vector>
-//#include "../../Libs/NumbersLib.h"
+//#include "../../Libs/MyLib.h"
 //using namespace Input;
 //using namespace Strings;
 //using namespace std;
 //
 //int main() {
-//	string sWords = ReadWords("Please Enter A Sentence");
+//	string sWords = ReadStringWS("Please Enter A Sentence");
 //
 //	cout << ReverseWords(sWords, " ") << endl;
 //

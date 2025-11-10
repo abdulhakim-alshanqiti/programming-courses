@@ -1,5 +1,5 @@
 //#include <iostream>
-//#include "../../Libs/NumbersLib.h"
+//#include "../../Libs/MyLib.h"
 //using namespace std;
 //using namespace Output;
 //

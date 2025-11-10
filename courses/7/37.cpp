@@ -1,7 +1,7 @@
 //#include <iostream>
 //#include<string>
 //#include<vector>
-//#include "../../Libs/NumbersLib.h"
+//#include "../../Libs/MyLib.h"
 //using namespace Input;
 //using namespace Strings;
 //using namespace std;
@@ -40,7 +40,7 @@
 //
 //int main() {
 //
-//	string String = ReadWords("Pick a String");
+//	string String = ReadStringWS("Pick a String");
 //	vector<string> vString = SplitString(String, " ");
 //	cout << "The Tokens Are " << vString.size() << endl;;
 //

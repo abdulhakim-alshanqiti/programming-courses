@@ -1,6 +1,6 @@
 //#include<iostream>
 //#include<string>
-//#include"../../Libs/NumbersLib.h"
+//#include"../../Libs/MyLib.h"
 //
 //using namespace std;
 //using namespace Output;

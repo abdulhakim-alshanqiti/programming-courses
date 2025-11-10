@@ -18,6 +18,26 @@ namespace Vectors {
 	}
 }
 namespace Strings {
+	string RepeatString(int length, string StringToRepeat) {
+		string Line;
+		for (short i = 0; i < length; i++)
+		{
+			Line += StringToRepeat;
+		}
+		return Line;
+	}
+	string RemovePunctioationsFromString(string String) {
+		string NewString = "";
+		for (short i = 0; i < String.length(); i++)
+		{
+			if (!ispunct(String[i])) {
+				NewString += String[i];
+			}
+		}
+		return NewString;
+	}
+
+
 	vector<string> SplitString(string String, string Seperator) {
 		short pos = 0;
 		string sWord = "";
@@ -155,6 +175,28 @@ namespace Strings {
 		}
 		return S1;
 	}
+	string FindAndReplace(string String, string Find, string Replace, bool MatchCase = true) {
+		vector<string> vWords = SplitString(String, " ");
+		if (MatchCase) {
+
+			for (string& Word : vWords) {
+				if (Word == Find) {
+					Word = Replace;
+				}
+			}
+
+		}
+		else {
+			for (string& Word : vWords) {
+				if (LowerAllLetters(Word) == LowerAllLetters(Find)) {
+					Word = Replace;
+				}
+			}
+		}
+
+		return JoinString(vWords, " ");
+
+	}
 }
 namespace Input {
 	void SeedRandomness() {
@@ -163,11 +205,12 @@ namespace Input {
 	int RandomNumber(int from, int to) {
 		return rand() % (to - from + 1) + from;
 	}
-	string ReadWords(string message) {
+
+	string ReadStringWS(string message) {
 		string input = "";
 
 		cout << message << endl;
-		getline(cin, input);
+		getline(cin >> ws, input);
 
 		return input;
 	}
@@ -175,10 +218,12 @@ namespace Input {
 		string input = "";
 
 		cout << message << endl;
-		cin >> input;
+		getline(cin, input);
 
 		return input;
 	}
+
+
 	char ReadChar(string message) {
 		char input = ' ';
 
@@ -221,7 +266,21 @@ namespace Input {
 		int number = 0;
 		do {
 			number = ReadNumber(message);
-		} while (number >= 0);
+		} while (number < 0);
+		return number;
+	}
+	float ReadPositiveFloat(string message) {
+		float number = 0.0;
+		do {
+			number = ReadNumber(message);
+		} while (number < 0);
+		return number;
+	}
+	double ReadPositiveDouble(string message) {
+		double number = 0.0;
+		do {
+			number = ReadNumber(message);
+		} while (number < 0);
 		return number;
 	}
 	int ReadNumberInRange(string message, int from, int to) {

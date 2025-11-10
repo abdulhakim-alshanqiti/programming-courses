@@ -1,7 +1,7 @@
 //#include <iostream>
 //#include<string>
 //#include<vector>
-//#include "../../Libs/NumbersLib.h"
+//#include "../../Libs/MyLib.h"
 //using namespace Input;
 //
 //using namespace std;
@@ -34,7 +34,7 @@
 //	return String;
 //}
 //int main() {
-//	string sWords = ReadWords("Please Enter A Sentence");
+//	string sWords = ReadStringWS("Please Enter A Sentence");
 //
 //	cout << sWords << endl;
 //	string sWords2 = FindAndReplace(sWords, "hey", "hi");

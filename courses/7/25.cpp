@@ -1,6 +1,6 @@
 //#include <iostream>
 //#include<string>
-//#include "../../Libs/NumbersLib.h"
+//#include "../../Libs/MyLib.h"
 //#include <vector>
 //using namespace Input;
 //using namespace std;
@@ -24,7 +24,7 @@
 //
 //int main() {
 //
-//	string myString = ReadWords("Enter a String");
+//	string myString = ReadStringWS("Enter a String");
 //
 //
 //	myString = LowerFirstLetterOfEachWord(myString);

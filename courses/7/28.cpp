@@ -1,6 +1,6 @@
 //#include <iostream>
 //#include<string>
-//#include "../../Libs/NumbersLib.h"
+//#include "../../Libs/MyLib.h"
 //using namespace Input;
 //using namespace Strings;
 //using namespace std;
@@ -15,7 +15,7 @@
 //
 //int main() {
 //
-//	string myString = ReadWords("Enter a Sentence");
+//	string myString = ReadStringWS("Enter a Sentence");
 //	system("cls");
 //	cout << "String before Inversion \n\n" << myString << "\n\n";
 //

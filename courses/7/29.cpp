@@ -1,6 +1,6 @@
 //#include <iostream>
 //#include<string>
-//#include "../../Libs/NumbersLib.h"
+//#include "../../Libs/MyLib.h"
 //using namespace Input;
 //using namespace Strings;
 //using namespace std;
@@ -38,7 +38,7 @@
 //}
 //
 //int main() {
-//	string S1 = ReadWords("Write a Sentence");
+//	string S1 = ReadStringWS("Write a Sentence");
 //
 //	cout << "\nString Length = " << S1.length();
 //	cout << "\nCapital Letters Count= " << CountUpperCaseLetters(S1);
