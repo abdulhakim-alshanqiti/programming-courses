@@ -8,7 +8,7 @@
 //using namespace std;
 //using namespace Strings;
 //using namespace Output;
-//struct stCLientRecord {
+//struct stClientRecord {
 //	string	AccountId = "";
 //	string	PinCode = "";
 //	string	Name = "";
@@ -26,7 +26,7 @@
 //};
 //const string ClientsFilePath = "./courses/7/Projects/project2.txt";
 //
-//void ShowMainMenu();
+//void ShowMainMenuScreen();
 //
 //
 //
@@ -48,9 +48,9 @@
 //	}
 //	MyFile.close();
 //}
-//bool DoesClientExistByAccountId(string AccountId, vector<stCLientRecord>& vClientsRecords) {
+//bool DoesClientExistByAccountId(string AccountId, vector<stClientRecord>& vClientsRecords) {
 //
-//	for (stCLientRecord& ClientRecord : vClientsRecords)
+//	for (stClientRecord& ClientRecord : vClientsRecords)
 //	{
 //		if (ClientRecord.AccountId == AccountId)
 //		{
@@ -61,7 +61,7 @@
 //
 //	return false;
 //}
-//string ClientRecordToString(stCLientRecord Client, string Seperator = "#//#") {
+//string ClientRecordToString(stClientRecord Client, string Seperator = "#//#") {
 //	string sClientRecord = "";
 //
 //	sClientRecord += Client.AccountId + Seperator;
@@ -73,10 +73,10 @@
 //	return sClientRecord;
 //}
 //
-//stCLientRecord ClientRecordFromString(string sClientRecord, string Seperator = "#//#") {
+//stClientRecord ClientRecordFromString(string sClientRecord, string Seperator = "#//#") {
 //
 //	vector<string> vSections = SplitString(sClientRecord, Seperator);
-//	stCLientRecord ClientRecord;
+//	stClientRecord ClientRecord;
 //
 //	ClientRecord.AccountId = vSections[0];
 //	ClientRecord.PinCode = vSections[1];
@@ -87,13 +87,13 @@
 //
 //	return ClientRecord;
 //}
-//vector<stCLientRecord> GetClientsFromFile() {
-//	vector<stCLientRecord> vClientsRecords;
+//vector<stClientRecord> GetClientsFromFile() {
+//	vector<stClientRecord> vClientsRecords;
 //
 //	fstream MyFile;
 //
 //	string line = "";
-//	stCLientRecord ClientRecord;
+//	stClientRecord ClientRecord;
 //
 //	MyFile.open(ClientsFilePath, ios::in);
 //
@@ -110,7 +110,7 @@
 //	return vClientsRecords;
 //}
 //string ReadUniqueAccountId() {
-//	vector<stCLientRecord> vClientsRecords = GetClientsFromFile();
+//	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
 //
 //	string AccountId = ReadStringWS("Please Enter Your Account ID");
 //
@@ -124,9 +124,9 @@
 //}
 //
 //
-//stCLientRecord ReadClientRecord(string AccountId = "") {
+//stClientRecord ReadClientRecord(string AccountId = "") {
 //
-//	stCLientRecord ClientRecord;
+//	stClientRecord ClientRecord;
 //	ClientRecord.AccountId = (AccountId == "") ? ReadUniqueAccountId() : AccountId;
 //
 //	ClientRecord.PinCode = ReadStringWS("Please Enter Your Pin Code");
@@ -138,7 +138,7 @@
 //}
 //
 //
-//void PrintClientCard(stCLientRecord ClientRecord) {
+//void PrintClientCard(stClientRecord ClientRecord) {
 //	PrintLine();
 //	cout
 //		<< "Account ID :" << ClientRecord.AccountId << endl
@@ -167,7 +167,7 @@
 //	PrintLine();
 //}
 //
-//void PrintClientRecord(stCLientRecord ClientRecord) {
+//void PrintClientRecord(stClientRecord ClientRecord) {
 //
 //	cout
 //		<< " | " << left << setw(15) << ClientRecord.AccountId
@@ -177,14 +177,14 @@
 //		<< " | " << left << setw(10) << ClientRecord.AccountBalance << endl;
 //
 //}
-//void PrintTableBody(vector<stCLientRecord>& vClientsRecords) {
+//void PrintTableBody(vector<stClientRecord>& vClientsRecords) {
 //
-//	for (stCLientRecord& CLientRecord : vClientsRecords) {
+//	for (stClientRecord& CLientRecord : vClientsRecords) {
 //		PrintClientRecord(CLientRecord);
 //	}
 //	PrintLine();
 //}
-//void PrintAllClientsData(vector<stCLientRecord> vClientsRecords) {
+//void PrintAllClientsData(vector<stClientRecord> vClientsRecords) {
 //	if (vClientsRecords.size() == 0)
 //		Printl("No CLients Available In The System");
 //	else {
@@ -198,11 +198,11 @@
 //
 //
 //
-//bool FindClientByAccountId(stCLientRecord& TempClientRecord, vector<stCLientRecord>& vClientsRecords, string AccountIdToSearchFor) {
+//bool FindClientByAccountId(stClientRecord& TempClientRecord, vector<stClientRecord>& vClientsRecords, string AccountIdToSearchFor) {
 //
 //
 //
-//	for (stCLientRecord& ClientRecord : vClientsRecords)
+//	for (stClientRecord& ClientRecord : vClientsRecords)
 //	{
 //		if (ClientRecord.AccountId == AccountIdToSearchFor)
 //		{
@@ -215,13 +215,13 @@
 //	return false;
 //}
 //
-//void SaveClientsDataToFile(vector<stCLientRecord>& vClientsRecords) {
+//void SaveClientsDataToFile(vector<stClientRecord>& vClientsRecords) {
 //	fstream MyFile;
 //	string Line = "";
 //	MyFile.open(ClientsFilePath, ios::out);
 //
 //	if (MyFile.is_open()) {
-//		for (stCLientRecord& ClientRecord : vClientsRecords) {
+//		for (stClientRecord& ClientRecord : vClientsRecords) {
 //			if (ClientRecord.MarkForDeletion == false) {
 //				Line = ClientRecordToString(ClientRecord);
 //				MyFile << Line << endl;
@@ -232,12 +232,12 @@
 //	MyFile.close();
 //}
 //
-//void UpdateClientRecord(vector<stCLientRecord>& vClientsRecords, stCLientRecord& ClientRecordToUpdate) {
+//void UpdateClientRecord(vector<stClientRecord>& vClientsRecords, stClientRecord& ClientRecordToUpdate) {
 //	char AreYouSure = 'n';
 //	AreYouSure = ReadChar("Are You Sure You Want To Update Record ?");
 //	if (toupper(AreYouSure) == 'Y') {
 //
-//		for (stCLientRecord& ClientRecord : vClientsRecords)
+//		for (stClientRecord& ClientRecord : vClientsRecords)
 //		{
 //			if (ClientRecord.AccountId == ClientRecordToUpdate.AccountId)
 //			{
@@ -254,12 +254,12 @@
 //	}
 //}
 //
-//void DeleteClientRecord(vector<stCLientRecord>& vClientsRecords, stCLientRecord& ClientRecordToDelete) {
+//void DeleteClientRecord(vector<stClientRecord>& vClientsRecords, stClientRecord& ClientRecordToDelete) {
 //	char AreYouSure = 'n';
 //	AreYouSure = ReadChar("Are You Sure You Want To Delete Record ?");
 //	if (toupper(AreYouSure) == 'Y') {
 //
-//		for (stCLientRecord& ClientRecord : vClientsRecords)
+//		for (stClientRecord& ClientRecord : vClientsRecords)
 //		{
 //			if (ClientRecord.AccountId == ClientRecordToDelete.AccountId)
 //			{
@@ -276,7 +276,7 @@
 //
 //void AddNewClient() {
 //
-//	vector<stCLientRecord> vClientsRecords = GetClientsFromFile();
+//	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
 //
 //
 //	vClientsRecords.push_back(ReadClientRecord());
@@ -302,7 +302,7 @@
 //}
 //
 //void ShowClientListScreen() {
-//	vector<stCLientRecord> vClientsRecords = GetClientsFromFile();
+//	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
 //
 //	PrintAllClientsData(vClientsRecords);
 //
@@ -328,9 +328,9 @@
 //	string Message = "Please Enter The Account ID You Want To Delete";
 //
 //	string AccountId = ReadStringWS(Message);
-//	stCLientRecord ClientRecord;
+//	stClientRecord ClientRecord;
 //
-//	vector<stCLientRecord> vClientsRecords = GetClientsFromFile();
+//	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
 //	while (!FindClientByAccountId(ClientRecord, vClientsRecords, AccountId))
 //	{
 //		Printl("The Account ID Doesn't Exist \nPlease Make Sure You Entered The Correct Number");
@@ -349,9 +349,9 @@
 //	string Message = "Please Enter The Account ID You Want To Update";
 //
 //	string AccountId = ReadStringWS(Message);
-//	stCLientRecord ClientRecord;
+//	stClientRecord ClientRecord;
 //
-//	vector<stCLientRecord> vClientsRecords = GetClientsFromFile();
+//	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
 //	while (!FindClientByAccountId(ClientRecord, vClientsRecords, AccountId))
 //	{
 //		Printl("The Account ID Doesn't Exist \nPlease Make Sure You Entered The Correct Number");
@@ -369,9 +369,9 @@
 //	string Message = "Please Enter The Account ID You Want To Find";
 //
 //	string AccountId = ReadStringWS(Message);
-//	stCLientRecord ClientRecord;
+//	stClientRecord ClientRecord;
 //
-//	vector<stCLientRecord> vClientsRecords = GetClientsFromFile();
+//	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
 //	while (!FindClientByAccountId(ClientRecord, vClientsRecords, AccountId))
 //	{
 //		Printl("The Account ID Doesn't Exist \nPlease Make Sure You Entered The Correct Number");
@@ -392,7 +392,7 @@
 //	PrintLine();
 //
 //	system("pause>0");
-//	ShowMainMenu();
+//	ShowMainMenuScreen();
 //}
 //
 //void GoToScreen(enMainMenuScreens Screen) {
@@ -440,7 +440,7 @@
 //		break;
 //	}
 //}
-//void ShowMainMenu() {
+//void ShowMainMenuScreen() {
 //	system("cls");
 //	PrintLine("=");
 //
@@ -464,7 +464,7 @@
 //
 //int main() {
 //
-//	ShowMainMenu();
+//	ShowMainMenuScreen();
 //
 //
 //	return 0;

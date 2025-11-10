@@ -6,7 +6,7 @@
 //using namespace std;
 //using namespace Strings;
 //
-//struct stCLientRecord {
+//struct stClientRecord {
 //	string	AccountNumber = "";
 //	string	PinCode = "";
 //	string	Name = "";
@@ -14,8 +14,8 @@
 //	double	AccountBalance = 0.0;
 //};
 //
-//stCLientRecord NewClientRecord() {
-//	stCLientRecord ClientRecord;
+//stClientRecord NewClientRecord() {
+//	stClientRecord ClientRecord;
 //
 //	ClientRecord.AccountNumber = ReadStringWS("Please Enter Your Account Number");
 //	ClientRecord.PinCode = ReadStringWS("Please Enter Your Pin Code");
@@ -25,7 +25,7 @@
 //
 //	return ClientRecord;
 //}
-//string ClientRecordToString(stCLientRecord Client, string Seperator = "#//#") {
+//string ClientRecordToString(stClientRecord Client, string Seperator = "#//#") {
 //	string sClientRecord = "";
 //
 //	sClientRecord += Client.AccountNumber + Seperator;
@@ -37,7 +37,7 @@
 //	return sClientRecord;
 //}
 //int main() {
-//	stCLientRecord ClientRecord = NewClientRecord();
+//	stClientRecord ClientRecord = NewClientRecord();
 //
 //
 //	cout << ClientRecordToString(ClientRecord) << endl;

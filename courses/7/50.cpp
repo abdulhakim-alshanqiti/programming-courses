@@ -8,7 +8,7 @@
 //using namespace std;
 //using namespace Strings;
 //using namespace Output;
-//struct stCLientRecord {
+//struct stClientRecord {
 //	string	AccountNumber = "";
 //	string	PinCode = "";
 //	string	Name = "";
@@ -35,8 +35,8 @@
 //	MyFile.close();
 //}
 //
-//stCLientRecord NewClientRecord() {
-//	stCLientRecord ClientRecord;
+//stClientRecord NewClientRecord() {
+//	stClientRecord ClientRecord;
 //
 //	ClientRecord.AccountNumber = ReadStringWS("Please Enter Your Account Number");
 //	ClientRecord.PinCode = ReadString("Please Enter Your Pin Code");
@@ -46,7 +46,7 @@
 //
 //	return ClientRecord;
 //}
-//string ClientRecordToString(stCLientRecord Client, string Seperator = "#//#") {
+//string ClientRecordToString(stClientRecord Client, string Seperator = "#//#") {
 //	string sClientRecord = "";
 //
 //	sClientRecord += Client.AccountNumber + Seperator;
@@ -58,10 +58,10 @@
 //	return sClientRecord;
 //}
 //
-//stCLientRecord ClientRecordFromString(string sClientRecord, string Seperator = "#//#") {
+//stClientRecord ClientRecordFromString(string sClientRecord, string Seperator = "#//#") {
 //
 //	vector<string> vSections = SplitString(sClientRecord, Seperator);
-//	stCLientRecord ClientRecord;
+//	stClientRecord ClientRecord;
 //
 //	ClientRecord.AccountNumber = vSections[0];
 //	ClientRecord.PinCode = vSections[1];
@@ -73,7 +73,7 @@
 //	return ClientRecord;
 //}
 //
-//void PrintClientCard(stCLientRecord ClientRecord) {
+//void PrintClientCard(stClientRecord ClientRecord) {
 //
 //	cout
 //		<< "Account Number :" << ClientRecord.AccountNumber << endl
@@ -86,13 +86,13 @@
 //
 //
 //
-//vector<stCLientRecord> GetClientsFromFile(string ClientsFilePath) {
-//	vector<stCLientRecord> vClientRecords;
+//vector<stClientRecord> GetClientsFromFile(string ClientsFilePath) {
+//	vector<stClientRecord> vClientRecords;
 //
 //	fstream MyFile;
 //
 //	string line = "";
-//	stCLientRecord ClientRecord;
+//	stClientRecord ClientRecord;
 //
 //	MyFile.open(ClientsFilePath, ios::in);
 //
@@ -125,15 +125,15 @@
 //	PrintColumnsNames();
 //	PrintLine();
 //}
-//void PrintTableBody(vector<stCLientRecord>& vClientsRecords) {
+//void PrintTableBody(vector<stClientRecord>& vClientsRecords) {
 //
-//	for (stCLientRecord& CLientRecord : vClientsRecords) {
+//	for (stClientRecord& CLientRecord : vClientsRecords) {
 //		PrintClientCard(CLientRecord);
 //	}
 //	PrintLine();
 //}
 //void PrintAllClientsData() {
-//	vector<stCLientRecord> vClientsRecords = GetClientsFromFile(ClientsFilePath);
+//	vector<stClientRecord> vClientsRecords = GetClientsFromFile(ClientsFilePath);
 //	cout << "\t\t\t\t" << "Client List (" << vClientsRecords.size() << ") Client(s)." << endl;
 //
 //	PrintTableHead();
@@ -142,9 +142,9 @@
 //
 //
 //
-//stCLientRecord FindClientByAccountNumber(vector<stCLientRecord>& vClientsRecords, string AccountNumberToSearchFor) {
+//stClientRecord FindClientByAccountNumber(vector<stClientRecord>& vClientsRecords, string AccountNumberToSearchFor) {
 //
-//	for (stCLientRecord& ClientRecord : vClientsRecords)
+//	for (stClientRecord& ClientRecord : vClientsRecords)
 //	{
 //		if (ClientRecord.AccountNumber == AccountNumberToSearchFor)
 //		{
@@ -152,16 +152,16 @@
 //		}
 //	}
 //
-//	stCLientRecord EmptyClientRecord;
+//	stClientRecord EmptyClientRecord;
 //	return EmptyClientRecord;
 //}
-//void SaveClientsDataToFile(vector<stCLientRecord>& vClientsRecords) {
+//void SaveClientsDataToFile(vector<stClientRecord>& vClientsRecords) {
 //	fstream MyFile;
 //	string Line = "";
 //	MyFile.open(ClientsFilePath, ios::out);
 //
 //	if (MyFile.is_open()) {
-//		for (stCLientRecord& ClientRecord : vClientsRecords) {
+//		for (stClientRecord& ClientRecord : vClientsRecords) {
 //			if (ClientRecord.MarkForDeletion == false) {
 //				Line = ClientRecordToString(ClientRecord);
 //				MyFile << Line << endl;
@@ -174,12 +174,12 @@
 //	MyFile.close();
 //}
 //
-//void MarkClientRecordForDeletion(vector<stCLientRecord>& vClientsRecords, stCLientRecord& ClientRecordToDelete) {
+//void MarkClientRecordForDeletion(vector<stClientRecord>& vClientsRecords, stClientRecord& ClientRecordToDelete) {
 //	char AreYouSure = 'n';
 //	AreYouSure = ReadChar("Are You Sure You Want To Delete Record ?");
 //	if (toupper(AreYouSure) == 'Y') {
 //
-//		for (stCLientRecord& ClientRecord : vClientsRecords)
+//		for (stClientRecord& ClientRecord : vClientsRecords)
 //		{
 //			if (ClientRecord.AccountNumber == ClientRecordToDelete.AccountNumber)
 //			{
@@ -196,9 +196,9 @@
 //int main() {
 //
 //	string AccountNumberToSearchFor = ReadStringWS("What Is The Account Number You Want To Delete?");
-//	vector<stCLientRecord> vClientsRecords = GetClientsFromFile(ClientsFilePath);
+//	vector<stClientRecord> vClientsRecords = GetClientsFromFile(ClientsFilePath);
 //
-//	stCLientRecord ClientRecord = FindClientByAccountNumber(vClientsRecords, AccountNumberToSearchFor);
+//	stClientRecord ClientRecord = FindClientByAccountNumber(vClientsRecords, AccountNumberToSearchFor);
 //
 //	if (ClientRecord.AccountNumber != "")
 //	{

@@ -8,7 +8,7 @@ using namespace Input;
 using namespace std;
 using namespace Strings;
 using namespace Output;
-struct stCLientRecord {
+struct stClientRecord {
 	string	AccountId = "";
 	string	PinCode = "";
 	string	Name = "";
@@ -22,13 +22,19 @@ enum enMainMenuScreens {
 	DeleteClient = 3,
 	UpdateClientInfo = 4,
 	FindClient = 5,
-	Exit = 6,
+	Transactions = 6,
+	Exit = 7,
+};
+enum enTransactionMenuScreens {
+	Deposit = 1,
+	Withdraw = 2,
+	TotalBalances = 3,
+	MainMenu = 4,
 };
 const string ClientsFilePath = "./courses/7/Projects/project2.txt";
 
-void ShowMainMenu();
-
-
+void ShowMainMenuScreen();
+void ShowTransactionsScreen();
 
 
 void PrintLine(string StringToRepeat = "_") {
@@ -48,9 +54,9 @@ void AddClientRecordToFile(string ClientRecord) {
 	}
 	MyFile.close();
 }
-bool DoesClientExistByAccountId(string AccountId, vector<stCLientRecord>& vClientsRecords) {
+bool DoesClientExistByAccountId(string AccountId, vector<stClientRecord>& vClientsRecords) {
 
-	for (stCLientRecord& ClientRecord : vClientsRecords)
+	for (stClientRecord& ClientRecord : vClientsRecords)
 	{
 		if (ClientRecord.AccountId == AccountId)
 		{
@@ -61,7 +67,7 @@ bool DoesClientExistByAccountId(string AccountId, vector<stCLientRecord>& vClien
 
 	return false;
 }
-string ClientRecordToString(stCLientRecord Client, string Seperator = "#//#") {
+string ClientRecordToString(stClientRecord Client, string Seperator = "#//#") {
 	string sClientRecord = "";
 
 	sClientRecord += Client.AccountId + Seperator;
@@ -73,10 +79,10 @@ string ClientRecordToString(stCLientRecord Client, string Seperator = "#//#") {
 	return sClientRecord;
 }
 
-stCLientRecord ClientRecordFromString(string sClientRecord, string Seperator = "#//#") {
+stClientRecord ClientRecordFromString(string sClientRecord, string Seperator = "#//#") {
 
 	vector<string> vSections = SplitString(sClientRecord, Seperator);
-	stCLientRecord ClientRecord;
+	stClientRecord ClientRecord;
 
 	ClientRecord.AccountId = vSections[0];
 	ClientRecord.PinCode = vSections[1];
@@ -87,13 +93,13 @@ stCLientRecord ClientRecordFromString(string sClientRecord, string Seperator = "
 
 	return ClientRecord;
 }
-vector<stCLientRecord> GetClientsFromFile() {
-	vector<stCLientRecord> vClientsRecords;
+vector<stClientRecord> GetClientsFromFile() {
+	vector<stClientRecord> vClientsRecords;
 
 	fstream MyFile;
 
 	string line = "";
-	stCLientRecord ClientRecord;
+	stClientRecord ClientRecord;
 
 	MyFile.open(ClientsFilePath, ios::in);
 
@@ -110,7 +116,7 @@ vector<stCLientRecord> GetClientsFromFile() {
 	return vClientsRecords;
 }
 string ReadUniqueAccountId() {
-	vector<stCLientRecord> vClientsRecords = GetClientsFromFile();
+	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
 
 	string AccountId = ReadStringWS("Please Enter Your Account ID");
 
@@ -124,9 +130,9 @@ string ReadUniqueAccountId() {
 }
 
 
-stCLientRecord ReadClientRecord(string AccountId = "") {
+stClientRecord ReadClientRecord(string AccountId = "") {
 
-	stCLientRecord ClientRecord;
+	stClientRecord ClientRecord;
 	ClientRecord.AccountId = (AccountId == "") ? ReadUniqueAccountId() : AccountId;
 
 	ClientRecord.PinCode = ReadStringWS("Please Enter Your Pin Code");
@@ -138,7 +144,7 @@ stCLientRecord ReadClientRecord(string AccountId = "") {
 }
 
 
-void PrintClientCard(stCLientRecord ClientRecord) {
+void PrintClientCard(stClientRecord ClientRecord) {
 	PrintLine();
 	cout
 		<< "Account ID :" << ClientRecord.AccountId << endl
@@ -167,7 +173,7 @@ void PrintTableHead() {
 	PrintLine();
 }
 
-void PrintClientRecord(stCLientRecord ClientRecord) {
+void PrintClientRecord(stClientRecord ClientRecord) {
 
 	cout
 		<< " | " << left << setw(15) << ClientRecord.AccountId
@@ -177,14 +183,14 @@ void PrintClientRecord(stCLientRecord ClientRecord) {
 		<< " | " << left << setw(10) << ClientRecord.AccountBalance << endl;
 
 }
-void PrintTableBody(vector<stCLientRecord>& vClientsRecords) {
+void PrintTableBody(vector<stClientRecord>& vClientsRecords) {
 
-	for (stCLientRecord& CLientRecord : vClientsRecords) {
+	for (stClientRecord& CLientRecord : vClientsRecords) {
 		PrintClientRecord(CLientRecord);
 	}
 	PrintLine();
 }
-void PrintAllClientsData(vector<stCLientRecord> vClientsRecords) {
+void PrintAllClientsData(vector<stClientRecord> vClientsRecords) {
 	if (vClientsRecords.size() == 0)
 		Printl("No CLients Available In The System");
 	else {
@@ -198,11 +204,11 @@ void PrintAllClientsData(vector<stCLientRecord> vClientsRecords) {
 
 
 
-bool FindClientByAccountId(stCLientRecord& TempClientRecord, vector<stCLientRecord>& vClientsRecords, string AccountIdToSearchFor) {
+bool FindClientByAccountId(stClientRecord& TempClientRecord, vector<stClientRecord>& vClientsRecords, string AccountIdToSearchFor) {
 
 
 
-	for (stCLientRecord& ClientRecord : vClientsRecords)
+	for (stClientRecord& ClientRecord : vClientsRecords)
 	{
 		if (ClientRecord.AccountId == AccountIdToSearchFor)
 		{
@@ -215,13 +221,13 @@ bool FindClientByAccountId(stCLientRecord& TempClientRecord, vector<stCLientReco
 	return false;
 }
 
-void SaveClientsDataToFile(vector<stCLientRecord>& vClientsRecords) {
+void SaveClientsDataToFile(vector<stClientRecord>& vClientsRecords) {
 	fstream MyFile;
 	string Line = "";
 	MyFile.open(ClientsFilePath, ios::out);
 
 	if (MyFile.is_open()) {
-		for (stCLientRecord& ClientRecord : vClientsRecords) {
+		for (stClientRecord& ClientRecord : vClientsRecords) {
 			if (ClientRecord.MarkForDeletion == false) {
 				Line = ClientRecordToString(ClientRecord);
 				MyFile << Line << endl;
@@ -232,12 +238,12 @@ void SaveClientsDataToFile(vector<stCLientRecord>& vClientsRecords) {
 	MyFile.close();
 }
 
-void UpdateClientRecord(vector<stCLientRecord>& vClientsRecords, stCLientRecord& ClientRecordToUpdate) {
+void UpdateClientRecord(vector<stClientRecord>& vClientsRecords, stClientRecord& ClientRecordToUpdate) {
 	char AreYouSure = 'n';
 	AreYouSure = ReadChar("Are You Sure You Want To Update Record ?");
 	if (toupper(AreYouSure) == 'Y') {
 
-		for (stCLientRecord& ClientRecord : vClientsRecords)
+		for (stClientRecord& ClientRecord : vClientsRecords)
 		{
 			if (ClientRecord.AccountId == ClientRecordToUpdate.AccountId)
 			{
@@ -254,12 +260,12 @@ void UpdateClientRecord(vector<stCLientRecord>& vClientsRecords, stCLientRecord&
 	}
 }
 
-void DeleteClientRecord(vector<stCLientRecord>& vClientsRecords, stCLientRecord& ClientRecordToDelete) {
+void DeleteClientRecord(vector<stClientRecord>& vClientsRecords, stClientRecord& ClientRecordToDelete) {
 	char AreYouSure = 'n';
 	AreYouSure = ReadChar("Are You Sure You Want To Delete Record ?");
 	if (toupper(AreYouSure) == 'Y') {
 
-		for (stCLientRecord& ClientRecord : vClientsRecords)
+		for (stClientRecord& ClientRecord : vClientsRecords)
 		{
 			if (ClientRecord.AccountId == ClientRecordToDelete.AccountId)
 			{
@@ -276,7 +282,7 @@ void DeleteClientRecord(vector<stCLientRecord>& vClientsRecords, stCLientRecord&
 
 void AddNewClient() {
 
-	vector<stCLientRecord> vClientsRecords = GetClientsFromFile();
+	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
 
 
 	vClientsRecords.push_back(ReadClientRecord());
@@ -302,7 +308,7 @@ void ShowExitScreen() {
 }
 
 void ShowClientListScreen() {
-	vector<stCLientRecord> vClientsRecords = GetClientsFromFile();
+	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
 
 	PrintAllClientsData(vClientsRecords);
 
@@ -328,9 +334,9 @@ void ShowDeleteClientScreen() {
 	string Message = "Please Enter The Account ID You Want To Delete";
 
 	string AccountId = ReadStringWS(Message);
-	stCLientRecord ClientRecord;
+	stClientRecord ClientRecord;
 
-	vector<stCLientRecord> vClientsRecords = GetClientsFromFile();
+	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
 	while (!FindClientByAccountId(ClientRecord, vClientsRecords, AccountId))
 	{
 		Printl("The Account ID Doesn't Exist \nPlease Make Sure You Entered The Correct Number");
@@ -349,9 +355,9 @@ void ShowUpdateClientScreen() {
 	string Message = "Please Enter The Account ID You Want To Update";
 
 	string AccountId = ReadStringWS(Message);
-	stCLientRecord ClientRecord;
+	stClientRecord ClientRecord;
 
-	vector<stCLientRecord> vClientsRecords = GetClientsFromFile();
+	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
 	while (!FindClientByAccountId(ClientRecord, vClientsRecords, AccountId))
 	{
 		Printl("The Account ID Doesn't Exist \nPlease Make Sure You Entered The Correct Number");
@@ -369,9 +375,9 @@ void ShowFindClientScreen() {
 	string Message = "Please Enter The Account ID You Want To Find";
 
 	string AccountId = ReadStringWS(Message);
-	stCLientRecord ClientRecord;
+	stClientRecord ClientRecord;
 
-	vector<stCLientRecord> vClientsRecords = GetClientsFromFile();
+	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
 	while (!FindClientByAccountId(ClientRecord, vClientsRecords, AccountId))
 	{
 		Printl("The Account ID Doesn't Exist \nPlease Make Sure You Entered The Correct Number");
@@ -384,7 +390,37 @@ void ShowFindClientScreen() {
 
 
 }
+void ShowDepositScreen() {
+	ScreenTitle("Depoist");
+	string Message = "Please Enter The Account ID You Want To Deposit To";
 
+	string AccountId = ReadStringWS(Message);
+
+	vector<stClientRecord> vClientsRecords = GetClientsFromFile();
+	while (!DoesClientExistByAccountId(AccountId,vClientsRecords))
+	{
+		Printl("The Account ID Doesn't Exist \nPlease Make Sure You Entered The Correct Number");
+		AccountId = ReadStringWS(Message);
+	}
+
+
+
+	for (stClientRecord ClientRecord : vClientsRecords) {
+		if (ClientRecord.AccountId == AccountId)
+		{
+			double DepositAmmount = (double)ReadPositiveNumber("Please Enter The Ammount You Want To Deposit");
+			PrintClientCard(ClientRecord);
+			ClientRecord.AccountBalance = ClientRecord.AccountBalance + DepositAmmount;
+			Printl("The New Balance Ammount Is " + to_string(ClientRecord.AccountBalance));
+
+		}
+
+	}
+
+
+
+
+}
 
 void GoBackToMainMenu() {
 	PrintLine();
@@ -392,10 +428,47 @@ void GoBackToMainMenu() {
 	PrintLine();
 
 	system("pause>0");
-	ShowMainMenu();
+	ShowMainMenuScreen();
 }
 
-void GoToScreen(enMainMenuScreens Screen) {
+void GoBackToTransactionsMenu() {
+	PrintLine();
+	Printl("\t\tPress Any Key To Go Back To Transactions Menu");
+	PrintLine();
+
+	system("pause>0");
+	ShowTransactionsScreen();
+}
+void GoToSubTransactionScreens(enTransactionMenuScreens Screen) {
+	switch (Screen)
+	{
+		case Deposit:
+		system("cls");
+		ShowDepositScreen();
+		GoBackToTransactionsMenu();
+		break;
+
+		case Withdraw:
+		system("cls");
+		ScreenTitle("WithDraw");
+		GoBackToTransactionsMenu();
+		break;
+	case TotalBalances:
+		system("cls");
+		ScreenTitle("Total Balances");
+
+		GoBackToTransactionsMenu();
+		break;
+	case MainMenu:
+		system("cls");
+
+		ShowMainMenuScreen();
+		break;
+
+	}
+
+}
+void GoToMainMenuScreens(enMainMenuScreens Screen) {
 	switch (Screen)
 	{
 	case ClientList:
@@ -432,6 +505,14 @@ void GoToScreen(enMainMenuScreens Screen) {
 
 		GoBackToMainMenu();
 		break;
+
+	case Transactions:
+		system("cls");
+
+		ShowTransactionsScreen();
+
+		//GoBackToMainMenu();
+		break;
 	case Exit:
 		system("cls");
 
@@ -440,7 +521,26 @@ void GoToScreen(enMainMenuScreens Screen) {
 		break;
 	}
 }
-void ShowMainMenu() {
+void ShowTransactionsScreen() {
+	system("cls");
+	PrintLine("=");
+
+	Printl("\t Transaction Menu Screen");
+	PrintLine("=");
+	Printl("\t [1] Deposit");
+	Printl("\t [2] Withdraw");
+	Printl("\t [3] Total Balances");
+	Printl("\t [4] Go Back To Main Menu");
+	PrintLine("=");
+
+
+	enTransactionMenuScreens Screen = (enTransactionMenuScreens)
+		ReadNumberInRange("What Do You Want To Do ? \nEnter a Number [1 to 4]", 1, 4);
+
+	GoToSubTransactionScreens(Screen);
+
+}
+void ShowMainMenuScreen() {
 	system("cls");
 	PrintLine("=");
 
@@ -451,20 +551,21 @@ void ShowMainMenu() {
 	Printl("\t [3] Delete Client");
 	Printl("\t [4] Update Client Info");
 	Printl("\t [5] Find Client");
-	Printl("\t [6] Exit");
+	Printl("\t [6] Transactions");
+	Printl("\t [7] Exit");
 
 	PrintLine("=");
 
 	enMainMenuScreens Screen = (enMainMenuScreens)
-		ReadNumberInRange("What Do You Want To Do ? \nEnter a Number [1 to 6]", 1, 6);
+		ReadNumberInRange("What Do You Want To Do ? \nEnter a Number [1 to 7]", 1, 7);
 
-	GoToScreen(Screen);
+	GoToMainMenuScreens(Screen);
 
 }
 
 int main() {
 
-	ShowMainMenu();
+	ShowMainMenuScreen();
 
 
 	return 0;

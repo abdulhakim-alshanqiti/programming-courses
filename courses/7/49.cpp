@@ -8,7 +8,7 @@
 //using namespace std;
 //using namespace Strings;
 //using namespace Output;
-//struct stCLientRecord {
+//struct stClientRecord {
 //	string	AccountNumber = "";
 //	string	PinCode = "";
 //	string	Name = "";
@@ -33,8 +33,8 @@
 //	}
 //	MyFile.close();
 //}
-//stCLientRecord NewClientRecord() {
-//	stCLientRecord ClientRecord;
+//stClientRecord NewClientRecord() {
+//	stClientRecord ClientRecord;
 //
 //	ClientRecord.AccountNumber = ReadStringWS("Please Enter Your Account Number");
 //	ClientRecord.PinCode = ReadString("Please Enter Your Pin Code");
@@ -44,7 +44,7 @@
 //
 //	return ClientRecord;
 //}
-//string ClientRecordToString(stCLientRecord Client, string Seperator = "#//#") {
+//string ClientRecordToString(stClientRecord Client, string Seperator = "#//#") {
 //	string sClientRecord = "";
 //
 //	sClientRecord += Client.AccountNumber + Seperator;
@@ -56,9 +56,9 @@
 //	return sClientRecord;
 //}
 //
-//stCLientRecord ClientRecordFromString(string sClientRecord, string Seperator = "#//#") {
+//stClientRecord ClientRecordFromString(string sClientRecord, string Seperator = "#//#") {
 //	vector<string> vSections = SplitString(sClientRecord, Seperator);
-//	stCLientRecord ClientRecord;
+//	stClientRecord ClientRecord;
 //
 //	ClientRecord.AccountNumber = vSections[0];
 //	ClientRecord.PinCode = vSections[1];
@@ -69,7 +69,7 @@
 //	return ClientRecord;
 //}
 //
-//void PrintClientRecord(stCLientRecord ClientRecord) {
+//void PrintClientRecord(stClientRecord ClientRecord) {
 //
 //	cout
 //		<< "Account Number :" << ClientRecord.AccountNumber << endl
@@ -81,13 +81,13 @@
 //}
 //
 //
-//vector<stCLientRecord> GetClientsFromFile(string filePath) {
-//	vector<stCLientRecord> vClientRecords;
+//vector<stClientRecord> GetClientsFromFile(string filePath) {
+//	vector<stClientRecord> vClientRecords;
 //
 //	fstream MyFile;
 //
 //	string line = "";
-//	stCLientRecord ClientRecord;
+//	stClientRecord ClientRecord;
 //
 //	MyFile.open(filePath, ios::in);
 //
@@ -127,15 +127,15 @@
 //	PrintColumnsNames();
 //	PrintLine();
 //}
-//void PrintTableBody(vector<stCLientRecord>& ClientsRecords) {
+//void PrintTableBody(vector<stClientRecord>& ClientsRecords) {
 //
-//	for (stCLientRecord& CLientRecord : ClientsRecords) {
+//	for (stClientRecord& CLientRecord : ClientsRecords) {
 //		PrintClientRecord(CLientRecord);
 //	}
 //	PrintLine();
 //}
 //void PrintAllClientsData() {
-//	vector<stCLientRecord> ClientsRecords = GetClientsFromFile(FilePath);
+//	vector<stClientRecord> ClientsRecords = GetClientsFromFile(FilePath);
 //	cout << "\t\t\t\t" << "Client List (" << ClientsRecords.size() << ") Client(s)." << endl;
 //
 //	PrintTableHead();
@@ -144,10 +144,10 @@
 //
 //
 //
-//stCLientRecord FindClientByAccountNumber(string AccountNumberToSearchFor) {
-//	vector<stCLientRecord> ClientsRecords = GetClientsFromFile(FilePath);
+//stClientRecord FindClientByAccountNumber(string AccountNumberToSearchFor) {
+//	vector<stClientRecord> ClientsRecords = GetClientsFromFile(FilePath);
 //
-//	for (stCLientRecord& ClientRecord : ClientsRecords)
+//	for (stClientRecord& ClientRecord : ClientsRecords)
 //	{
 //		if (ClientRecord.AccountNumber == AccountNumberToSearchFor)
 //		{
@@ -155,7 +155,7 @@
 //		}
 //	}
 //
-//	stCLientRecord EmptyClientRecord;
+//	stClientRecord EmptyClientRecord;
 //	return EmptyClientRecord;
 //}
 //
@@ -163,7 +163,7 @@
 //int main() {
 //
 //	string AccountNumberToSearchFor = ReadStringWS("What Is The Account Number You Want To Search For?");
-//	stCLientRecord ClientRecord = FindClientByAccountNumber(AccountNumberToSearchFor);
+//	stClientRecord ClientRecord = FindClientByAccountNumber(AccountNumberToSearchFor);
 //	if (ClientRecord.AccountNumber != "")
 //		PrintClientRecord(ClientRecord);
 //	else
