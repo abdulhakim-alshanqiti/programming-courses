@@ -281,6 +281,7 @@
     <ClCompile Include="courses\7\Projects\project.cpp" />
     <ClCompile Include="courses\7\Projects\project2.cpp" />
     <ClCompile Include="courses\7\Projects\extra.cpp" />
+    <ClCompile Include="courses\8\1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Libs\MyLib.h" />
