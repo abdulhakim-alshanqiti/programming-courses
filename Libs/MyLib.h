@@ -321,6 +321,13 @@ namespace Output {
 	void Printl(int message) {
 		cout << message << endl;
 	}
+
+	void Print(long long message) {
+		cout << message;
+	}
+	void Printl(long long message) {
+		cout << message << endl;
+	}
 	void Print(double message) {
 		cout << message;
 	}
