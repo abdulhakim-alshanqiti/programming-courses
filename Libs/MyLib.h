@@ -3,6 +3,71 @@
 #include <string>
 #include <vector>
 using namespace std;
+namespace Time {
+	string DayLongName(short Day) {
+		string arrDaysOfWeek[7] = { "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday" };
+		return arrDaysOfWeek[Day];
+
+	}
+	string DayShortName(short Day) {
+		string arrDaysOfWeek[7] = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
+		return arrDaysOfWeek[Day];
+
+	}
+
+	string MonthLongName(short Month) {
+		string arrOfMonth[13] = {"", "January","February","March","April","May","June","July","August","September","October","November","December" };
+		return arrOfMonth[Month];
+	}
+	string MonthShortName(short Month) {
+		string arrOfMonth[13] = { "", "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec" };
+		return arrOfMonth[Month];
+	}
+
+
+	short IndexOfDayInYear(short Year, short Month, short Day) {
+		short a, y, m;
+		a = (14 - Month) / 12;
+		y = Year - a;
+		m = Month + (12 * a) - 2;
+
+		return (Day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12)) % 7;;
+	}
+	bool IsLeapYear(short year) {
+		return   (year % 400 == 0) || (year % 100 != 0 && year % 4 == 0);
+	}
+	short NumberOfDaysInMonth(short Month, short Year) {
+		if (Month < 1 || Month > 12)
+			return 0;
+
+		short NumberOfDaysInEachMonth[13] = { 0,31,28,31,30,31,30,31,31,30,31,30,31 };
+
+		return	(Month == 2) ? (IsLeapYear(Year) ? 29 : 28) : NumberOfDaysInEachMonth[Month];
+	}
+
+
+	short NumberOfHoursInMonth(short Month, short Year) {
+		return NumberOfDaysInMonth(Month, Year) * 24;
+	}
+	int NumberOfMinutesInMonth(short Month, short Year) {
+		return NumberOfHoursInMonth(Month, Year) * 60;
+	}
+	int NumberOfSecondsInMonth(short Month, short Year) {
+		return NumberOfMinutesInMonth(Month, Year) * 60;
+	}
+	short NumberOfDaysInYear(short Year) {
+		return  (IsLeapYear(Year) ? 366 : 365);
+	}
+	short NumberOfHoursInYear(short Year) {
+		return NumberOfDaysInYear(Year) * 24;
+	}
+	int NumberOfMinutesInYear(short Year) {
+		return NumberOfHoursInYear(Year) * 60;
+	}
+	int NumberOfSecondsInYear(short Year) {
+		return NumberOfMinutesInYear(Year) * 60;
+	}
+}
 namespace Vectors {
 	vector<string> ReverseVector(vector<string>& Vector) {
 

@@ -282,6 +282,13 @@
     <ClCompile Include="courses\7\Projects\project2.cpp" />
     <ClCompile Include="courses\7\Projects\extra.cpp" />
     <ClCompile Include="courses\8\1.cpp" />
+    <ClCompile Include="courses\8\2.cpp" />
+    <ClCompile Include="courses\8\3.cpp" />
+    <ClCompile Include="courses\8\4.cpp" />
+    <ClCompile Include="courses\8\5.cpp" />
+    <ClCompile Include="courses\8\6.cpp" />
+    <ClCompile Include="courses\8\7.cpp" />
+    <ClCompile Include="courses\8\8.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Libs\MyLib.h" />
