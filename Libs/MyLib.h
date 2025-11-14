@@ -25,7 +25,7 @@ namespace Time {
 	}
 
 
-	short IndexOfDayInYear(short Year, short Month, short Day) {
+	short DayOfWeekOrder(short Year, short Month, short Day) {
 		short a, y, m;
 		a = (14 - Month) / 12;
 		y = Year - a;
@@ -66,6 +66,52 @@ namespace Time {
 	}
 	int NumberOfSecondsInYear(short Year) {
 		return NumberOfMinutesInYear(Year) * 60;
+	}
+
+
+	short NumberOfDaysFromBeginningOfYear(short Year, short Month, short Day)
+	{
+		short CountOfDays = 0;
+		for (short i = 1; i < Month; i++) {
+			CountOfDays += NumberOfDaysInMonth(i, Year);
+		}
+
+
+		CountOfDays += Day;
+		return CountOfDays;
+	}
+	void PrintMonthCalendar(short Month, short Year)
+	{
+		short NumberOfDays = NumberOfDaysInMonth(Month, Year);
+		short FirstDayInTheMonth = DayOfWeekOrder(Year, Month, 1);
+
+		printf("\n  ______________ %s ______________ \n", MonthShortName(Month).c_str());
+		printf("\n  Sun  Mon  Tue  Wed  Thu  Fri  Sat \n\n");
+
+		short i;
+		for (i = 0; i < FirstDayInTheMonth; i++)
+		{
+			printf("     ");
+		}
+		for (short j = 1; j <= NumberOfDays; j++) {
+			printf("%5d", j);
+			if (++i == 7) {
+				i = 0;
+				printf("\n");
+			}
+		}
+		printf("\n\n  _________________________________ \n\n");
+
+	}
+	void PrintYearCalendar(short Year) {
+		printf("\n\n  _________________________________ \n\n");
+		printf("\t   Calendar - %d ", Year);
+		printf("\n\n  _________________________________ \n\n");
+
+		for (int i = 1; i <= 12; i++)
+			PrintMonthCalendar(i, Year);
+
+
 	}
 }
 namespace Vectors {

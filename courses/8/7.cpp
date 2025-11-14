@@ -21,7 +21,7 @@
 //}
 //
 //
-//short IndexOfDayInYear(short Year,short Month,short Day) {
+//short DayOfWeekOrder(short Year,short Month,short Day) {
 //	short a, y, m;
 //	a = (14 - Month) / 12;
 //	y = Year - a;
@@ -35,7 +35,7 @@
 //	short Month = ReadNumber("Enter A Month");
 //	short Day = ReadNumber("Enter A Day");
 //	Printl("The Day You Choosed is " + to_string(Year) + "/"+ to_string(Month) + "/" + to_string(Day) );
-//	Printl("Its a " + DayLongName(IndexOfDayInYear(Year, Month, Day)));
+//	Printl("Its a " + DayLongName(DayOfWeekOrder(Year, Month, Day)));
 //
 //	return 0;
 //}
