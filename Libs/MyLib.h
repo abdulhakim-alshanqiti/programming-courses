@@ -3,6 +3,11 @@
 #include <string>
 #include <vector>
 using namespace std;
+struct stDate {
+	short Year = 1;
+	short Month = 1;
+	short Day = 1;
+};
 namespace Time {
 	string DayLongName(short Day) {
 		string arrDaysOfWeek[7] = { "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday" };
@@ -69,7 +74,7 @@ namespace Time {
 	}
 
 
-	short NumberOfDaysFromBeginningOfYear(short Year, short Month, short Day)
+	short DayOrderInYear(short Year, short Month, short Day)
 	{
 		short CountOfDays = 0;
 		for (short i = 1; i < Month; i++) {
@@ -79,6 +84,26 @@ namespace Time {
 
 		CountOfDays += Day;
 		return CountOfDays;
+	}
+	stDate DateFromDayOrder(short DayOrder, short Year) {
+		short RemainingDays = DayOrder;
+		short MonthDays = 0;
+		stDate Date;
+		Date.Year = Year;
+
+		while (true) {
+			MonthDays = NumberOfDaysInMonth(Date.Month, Year);
+
+			if (RemainingDays > MonthDays) {
+				RemainingDays -= MonthDays;
+				Date.Month++;
+			}
+			else {
+				Date.Day = RemainingDays;
+				break;
+			}
+		}
+		return Date;
 	}
 	void PrintMonthCalendar(short Month, short Year)
 	{

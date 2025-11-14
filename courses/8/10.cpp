@@ -13,7 +13,7 @@
 //
 //
 //
-//short NumberOfDaysFromBeginningOfYear(short Year, short Month, short Day)
+//short DayOrderInYear(short Year, short Month, short Day)
 //{
 //	short CountOfDays = 0;
 //	for (short i = 1; i < Month; i++) {
@@ -28,7 +28,7 @@
 //	short Year = ReadNumber("Enter A Year");
 //	short Month = ReadNumber("Enter A Month");
 //	short Day = ReadNumber("Enter A Day");
-//	Printl(	NumberOfDaysFromBeginningOfYear(Year,Month,Day));
+//	Printl(	DayOrderInYear(Year,Month,Day));
 //
 //
 //	return 0;
