@@ -3,12 +3,15 @@
 #include <string>
 #include <vector>
 using namespace std;
-struct stDate {
-	short Year = 1;
-	short Month = 1;
-	short Day = 1;
-};
+
+
 namespace Time {
+
+	struct stDate {
+		short Year = 1;
+		short Month = 1;
+		short Day = 1;
+	};
 	string DayLongName(short Day) {
 		string arrDaysOfWeek[7] = { "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday" };
 		return arrDaysOfWeek[Day];
@@ -115,6 +118,45 @@ namespace Time {
 			}
 		}
 		return Date;
+	}
+	stDate AddDaysToDate(stDate Date, short DaysToAdd) {
+		short RemainingDays = DaysToAdd + DayOrderInYear(Date);
+		short MonthDays = 0;
+		short YearDays = 0;
+		Date.Month = 1;
+
+		while (true) {
+			YearDays = NumberOfDaysInYear(Date.Year);
+			if (RemainingDays > YearDays) {
+				RemainingDays -= YearDays;
+				Date.Year++;
+			}
+			else {
+				MonthDays = NumberOfDaysInMonth(Date.Month, Date.Year);
+				if (RemainingDays > MonthDays)
+				{
+					RemainingDays -= MonthDays;
+					Date.Month++;
+
+					if (Date.Month > 12) {
+						Date.Month = 1;
+						Date.Year++;
+					}
+				}
+				else {
+					Date.Day = RemainingDays;
+					break;
+				}
+			}
+		}
+		return Date;
+
+	}
+	bool IsDate1EqualToDate2(stDate Date1, stDate Date2) {
+		return
+			Date1.Year != Date2.Year ? false :
+			Date1.Month != Date2.Month ? false :
+			Date1.Day == Date2.Day;
 	}
 	void PrintMonthCalendar(short Month, short Year)
 	{
@@ -440,15 +482,10 @@ namespace Input {
 
 
 }
-
-
 namespace Output {
-
 	void Printl() {
 		cout << endl;
 	}
-
-
 	void Print(string message) {
 		cout << message;
 	}
@@ -461,14 +498,12 @@ namespace Output {
 	void Printl(char message) {
 		cout << message << endl;
 	}
-
 	void Print(int message) {
 		cout << message;
 	}
 	void Printl(int message) {
 		cout << message << endl;
 	}
-
 	void Print(long long message) {
 		cout << message;
 	}
