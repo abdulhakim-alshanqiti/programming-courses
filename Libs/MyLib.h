@@ -85,6 +85,17 @@ namespace Time {
 		CountOfDays += Day;
 		return CountOfDays;
 	}
+	short DayOrderInYear(stDate Date)
+	{
+		short CountOfDays = 0;
+		for (short i = 1; i < Date.Month; i++) {
+			CountOfDays += NumberOfDaysInMonth(i, Date.Year);
+		}
+
+
+		CountOfDays += Date.Day;
+		return CountOfDays;
+	}
 	stDate DateFromDayOrder(short DayOrder, short Year) {
 		short RemainingDays = DayOrder;
 		short MonthDays = 0;
