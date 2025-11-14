@@ -288,6 +288,10 @@
     <ClCompile Include="courses\8\13.cpp" />
     <ClCompile Include="courses\8\14.cpp" />
     <ClCompile Include="courses\8\15.cpp" />
+    <ClCompile Include="courses\8\16.cpp" />
+    <ClCompile Include="courses\8\17.cpp" />
+    <ClCompile Include="courses\8\18.cpp" />
+    <ClCompile Include="courses\8\19.cpp" />
     <ClCompile Include="courses\8\2.cpp" />
     <ClCompile Include="courses\8\3.cpp" />
     <ClCompile Include="courses\8\4.cpp" />

@@ -16,7 +16,7 @@
 //
 //
 //
-//stDate AddDaysToDate(stDate Date , short DaysToAdd) {
+//stDate IncreaseDateByNDays(stDate Date , short DaysToAdd) {
 //	short RemainingDays =   DaysToAdd  + DayOrderInYear(Date);
 //	short MonthDays = 0;
 //	short YearDays = 0;
@@ -61,7 +61,7 @@
 //	stDate Date = ReadDate(2022,10,10);
 //
 //	printf("The Date       %d/%d/%d  Before Adding %d Days To It \n", Date.Year, Date.Month, Date.Day, 2500);
-//	Date = AddDaysToDate(Date, 2500);
+//	Date = IncreaseDateByNDays(Date, 2500);
 //
 //	printf("The Date After %d/%d/%d \n", Date.Year, Date.Month, Date.Day);
 //

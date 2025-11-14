@@ -2,9 +2,10 @@
 //#include<iomanip>
 //#include <string>
 //#include <cmath>
-//
+//#include <ctime>
 //#include "../../Libs/MyLib.h"
 //#include <cstdio>
+//
 //using namespace std;
 //
 //using namespace Input;
@@ -13,15 +14,22 @@
 //using namespace Time;
 //
 //
-//bool IsLastMonthInYear(short Month) {
-//	return Month == 12;
-//}
-//bool IsLastDayInMonth(stDate Date) {
-//	return Date.Day == NumberOfDaysInMonth(Date.Month,Date.Year);
-//}
 ///// My Solution ^
+//stDate GetSystemDate() {
+//	stDate Date;
+//	time_t t = time(0);
+//	// get time now 
+//	tm* now = localtime(&t);
+//	Date.Year = now->tm_year + 1900;
+//	Date.Month = now->tm_mon + 1;
+//	Date.Day = now->tm_mday ;
 //
+//	return Date;
+//}
 //
+//short HowManyDaysHavePassedSince(stDate Date,bool IncludeLastDay=true) {
+//	return FindDiffBettwenTwoDates(Date, GetSystemDate(), IncludeLastDay);
+//}
 ///// Dr Abu Hadhud Solution  ^
 //
 //
@@ -40,15 +48,12 @@
 //
 //int main() {
 //
-//	stDate Date = ReadDate(2021, 12, 10);
+//	stDate Date = ReadDate(2003, 11, 18);
 //
-//	printf("The Date is %d/%d/%d   \n", Date.Year, Date.Month, Date.Day);
-//	bool IsLastDay = IsLastDayInMonth(Date);
+//	printf("You Were Born At \n%d/%d/%d   \n", Date.Year, Date.Month, Date.Day);
 //
-//	printf("is Last Day In Month %s \n", BoolToString(IsLastDay).c_str());
 //
-//	bool IsLastMonth = IsLastMonthInYear(Date.Month);
+//	printf("You Lived for : %d Days \n", HowManyDaysHavePassedSince(Date));
 //
-//	printf("is Last Month In Year %s \n", BoolToString(IsLastMonth).c_str());
 //	return 0;
 //}

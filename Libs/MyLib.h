@@ -1,7 +1,9 @@
 #pragma once
+#pragma warning(disable : 4996)
 #include <iostream>
 #include <string>
 #include <vector>
+#include <ctime>
 using namespace std;
 
 
@@ -12,6 +14,7 @@ namespace Time {
 		short Month = 1;
 		short Day = 1;
 	};
+
 	string DayLongName(short Day) {
 		string arrDaysOfWeek[7] = { "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday" };
 		return arrDaysOfWeek[Day];
@@ -119,7 +122,7 @@ namespace Time {
 		}
 		return Date;
 	}
-	stDate AddDaysToDate(stDate Date, short DaysToAdd) {
+	stDate IncreaseDateByNDays(stDate Date, short DaysToAdd) {
 		short RemainingDays = DaysToAdd + DayOrderInYear(Date);
 		short MonthDays = 0;
 		short YearDays = 0;
@@ -152,12 +155,77 @@ namespace Time {
 		return Date;
 
 	}
+
 	bool IsDate1EqualToDate2(stDate Date1, stDate Date2) {
 		return
-			Date1.Year != Date2.Year ? false :
-			Date1.Month != Date2.Month ? false :
-			Date1.Day == Date2.Day;
+			Date1.Year != Date2.Year ? false :(
+		Date1.Month != Date2.Month ? false :
+			Date1.Day == Date2.Day);
 	}
+
+	bool IsLastMonthInYear(short Month) {
+		return Month == 12;
+	}
+	bool IsLastDayInMonth(stDate Date) {
+		return Date.Day == NumberOfDaysInMonth(Date.Month, Date.Year);
+	}
+	bool IsDate1BeforeDate2(stDate Date1, stDate Date2) {
+
+		return
+			(Date1.Year < Date2.Year) ? true :
+			(Date1.Year != Date2.Year) ? false :
+
+			(Date1.Month < Date2.Month) ? true :
+			(Date1.Month != Date2.Month) ? false :
+
+			(Date1.Day < Date2.Day) ? true :
+			(Date1.Day != Date2.Day) ? false :
+
+			true;
+
+	}
+
+	stDate IncreaseDateByOneDay(stDate Date) {
+		if (IsLastDayInMonth(Date)) {
+			if (IsLastMonthInYear(Date.Month))
+			{
+				Date.Month = 1; Date.Day = 1; Date.Year++;
+			}
+			else {
+				Date.Day = 1;
+				Date.Month++;
+			}
+		}
+		else {
+			Date.Day++;
+		}
+		return Date;
+	}
+	short FindDiffBettwenTwoDates(stDate Date1, stDate Date2, bool WithLastDay = false) {
+		short CountDiff = 1;
+		while (IsDate1BeforeDate2(Date1, Date2)) {
+			CountDiff++;
+			Date1 = IncreaseDateByOneDay(Date1);
+		}
+		return WithLastDay ? CountDiff : --CountDiff;
+	}
+
+	stDate GetSystemDate() {
+		stDate Date;
+		time_t t = time(0);
+		// get time now 
+		tm* now = localtime(&t);
+		Date.Year = now->tm_year + 1900;
+		Date.Month = now->tm_mon + 1;
+		Date.Day = now->tm_mday;
+
+		return Date;
+	}
+	short HowManyDaysHavePassedSince(stDate Date, bool IncludeLastDay = true) {
+		return FindDiffBettwenTwoDates(Date, GetSystemDate(), IncludeLastDay);
+	}
+
+
 	void PrintMonthCalendar(short Month, short Year)
 	{
 		short NumberOfDays = NumberOfDaysInMonth(Month, Year);
