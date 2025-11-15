@@ -19,9 +19,6 @@ using namespace Time;
 /// Dr Abu Hadhud Solution  ^
 
 
-
-
-
 stDate ReadDate(short Year = 0, short Month = 0, short Day = 0) {
 	stDate Date;
 	Date.Year = (Year == 0) ? ReadNumber("Enter A Year") : Year;
@@ -34,12 +31,14 @@ stDate ReadDate(short Year = 0, short Month = 0, short Day = 0) {
 
 int main() {
 
-	stDate Date = ReadDate(2003, 11, 18);
+	stDate Date1 = ReadDate(2003, 11, 17);
+	stDate Date2 = ReadDate(2003, 11, 17);
 
-	printf("You Were Born At \n%d/%d/%d   \n", Date.Year, Date.Month, Date.Day);
+	printf("Date 1 \n%d/%d/%d   \n", Date1.Year, Date1.Month, Date1.Day);
 
+	printf("Date 2 \n%d/%d/%d   \n", Date2.Year, Date2.Month, Date2.Day);
 
-	printf("You Lived for : %d Days \n", HowManyDaysHavePassedSince(Date));
+	printf("The Diffrence is : %d Days \n", FindDiffBettwenTwoDates(Date1,Date2));
 
 	return 0;
 }

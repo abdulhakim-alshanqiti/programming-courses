@@ -201,13 +201,43 @@ namespace Time {
 		}
 		return Date;
 	}
+	void SwapDates(stDate &Date1, stDate &Date2) {
+		stDate TempDate;
+		TempDate.Year = Date1.Year;
+		TempDate.Month = Date1.Month;
+		TempDate.Day = Date1.Day;
+
+		Date1.Year = Date2.Year;
+		Date1.Month = Date2.Month;
+		Date1.Day = Date2.Day;
+
+		Date2.Year = TempDate.Year;
+		Date2.Month = TempDate.Month;
+		Date2.Day = TempDate.Day;
+
+
+	}
 	short FindDiffBettwenTwoDates(stDate Date1, stDate Date2, bool WithLastDay = false) {
-		short CountDiff = 1;
-		while (IsDate1BeforeDate2(Date1, Date2)) {
-			CountDiff++;
-			Date1 = IncreaseDateByOneDay(Date1);
+		short CountDiff = 0;
+		short FlagValue = 1;
+		bool IsBefore = IsDate1BeforeDate2(Date1, Date2);
+		bool IsEqual = IsDate1EqualToDate2(Date1, Date2);
+		if (!IsEqual) {
+			if (!IsBefore)  {
+				SwapDates(Date1, Date2);
+				FlagValue = -1;
+			}
+
+			while (IsDate1BeforeDate2(Date1, Date2)) {
+				CountDiff++;
+				Date1 = IncreaseDateByOneDay(Date1);
+			}
+
 		}
-		return WithLastDay ? CountDiff : --CountDiff;
+		else 
+			return 0;
+
+		return WithLastDay ? CountDiff * FlagValue : (++CountDiff) * FlagValue;
 	}
 
 	stDate GetSystemDate() {
