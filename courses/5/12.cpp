@@ -1,19 +1,45 @@
-// this is my version using recursion
 
-//#include <iostream>
-//using namespace std;
-//int ReadPositiveNumber(string message) {
-//	int number = 0;
-//	do {
-//		cout << message << endl;
+
+
+
+#include <iostream>
+#include <cmath>
+#include <string>
+
+using namespace std;
+
+
+int ReadPositiveNumber(string message) {
+	int number = 0;
+	do {
+		cout << message << endl;
+
+		cin >> number;
+	} while (number <= 0);
+
+
+	return number;
+
+}
+
+
+
+/// this is my version using nested for loops (this one gets an actual reversed numbers
+
+
+//void InvertedPattern(int number) {
+//	for (int i = number; i >= 1; i--) {
+//		int inverted = 0;
 //
-//		cin >> number;
-//	} while (number <= 0);
+//		for (int j = i; j >= 1; j--) {
+//			inverted = inverted * 10 + i;
+//		}
 //
-//
-//	return number;
-//
+//		cout << inverted << endl;
+//	}
 //}
+
+/// this is my version using recursion
 //void InvertedPattern(int number) {
 //	int inverted = 0;
 //	for (int i = 1; i <= number; i++) {
@@ -29,88 +55,24 @@
 //
 //	InvertedPattern(number - 1);
 //}
-//
-//int main() {
-//	int number = ReadPositiveNumber("Please Enter a Number");
-//	InvertedPattern(number);
-//	return 0;
-//}
 
-// this is my version using nested for loops (this one gets an actual reversed numbers
+void PrintNumberPattern(int number) {
+	cout << endl;
+	for (int i = number; i >= 1; i--) {
 
-//#include <iostream>
-//using namespace std;
-//int ReadPositiveNumber(string message) {
-//	int number = 0;
-//	do {
-//		cout << message << endl;
-//
-//		cin >> number;
-//	} while (number <= 0);
-//
-//
-//	return number;
-//
-//}
-//void InvertedPattern(int number) {
-//	for (int i = number; i >= 1; i--) {
-//		int inverted = 0;
-//
-//		for (int j = i; j >= 1; j--) {
-//			inverted = inverted * 10 + i;
-//		}
-//
-//		cout << inverted << endl;
-//	}
-//}
-//
-//int main() {
-//	int number = ReadPositiveNumber("Please Enter a Number");
-//	InvertedPattern(number);
-//	return 0;
-//}
+		for (int j = i; j >= 1; j--) {
+			cout << i;
+		};
 
+		cout << endl;
 
-//#include <iostream>
-//#include <cmath>
-//#include <string>
-//
-//using namespace std;
-//
-//
-//int ReadPositiveNumber(string message) {
-//	int number = 0;
-//	do {
-//		cout << message << endl;
-//
-//		cin >> number;
-//	} while (number <= 0);
-//
-//
-//	return number;
-//
-//}
-//
-//
-//
-//
-//void PrintNumberPattern(int number) {
-//	cout << endl;
-//	for (int i = number; i >= 1; i--) {
-//
-//		for (int j = i; j >= 1; j--) {
-//			cout << i;
-//		};
-//
-//		cout << endl;
-//
-//	}
-//
-//}
-//
-//int main()
-//{
-//	int number = ReadPositiveNumber("Please Enter a Number");
-//	PrintNumberPattern(number);
-//	return 0;
-//}
+	}
+
+}
+
+int main()
+{
+	int number = ReadPositiveNumber("Please Enter a Number");
+	PrintNumberPattern(number);
+	return 0;
+}

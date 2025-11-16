@@ -137,6 +137,12 @@ namespace Time {
 	bool IsLastDayInMonth(stDate Date) {
 		return Date.Day == NumberOfDaysInMonth(Date.Month, Date.Year);
 	}
+	bool IsFirstMonthInYear(short Month) {
+		return Month == 1;
+	}
+	bool IsFirstDayInMonth(short Day) {
+		return Day == 1;
+	}
 	bool IsDate1BeforeDate2(stDate Date1, stDate Date2) {
 
 		return
@@ -152,7 +158,7 @@ namespace Time {
 			true;
 
 	}
-
+	
 	stDate IncreaseDateByOneDay(stDate Date) {
 		if (IsLastDayInMonth(Date)) {
 			if (IsLastMonthInYear(Date.Month))
@@ -208,7 +214,7 @@ namespace Time {
 		// In Case The Number Of Days In The Past Month Is Greater Than This Month
 		short DaysInCurrentMonth = NumberOfDaysInMonth(Date.Month, Date.Year);
 
-		if (DaysInCurrentMonth < Date.Day)
+		if (Date.Day > DaysInCurrentMonth)
 			Date.Day = DaysInCurrentMonth;
 
 
@@ -281,7 +287,129 @@ namespace Time {
 
 		return Date;
 	}
-	
+
+	stDate DecreaseDateByOneDay(stDate Date) {
+		if (IsFirstDayInMonth(Date.Day))
+			if (IsFirstMonthInYear(Date.Month))
+				Date.Month = 12,
+				Date.Day = 31,
+				Date.Year--;
+
+			else
+				Date.Month--,
+				Date.Day = NumberOfDaysInMonth(Date.Month, Date.Year);
+
+		else
+			Date.Day--;
+
+		return Date;
+	}
+
+	stDate DecreaseDateByXDays(stDate Date, short NumberOfDaysToSubtract) {
+
+		for (short i = 0; i < NumberOfDaysToSubtract; i++) {
+			Date = DecreaseDateByOneDay(Date);
+		}
+
+		return Date;
+	}
+
+	stDate DecreaseDateByOneWeek(stDate Date) {
+
+		for (short i = 0; i < 7; i++) {
+			Date = DecreaseDateByOneDay(Date);
+		}
+
+
+		return Date;
+	}
+
+	stDate DecreaseDateByXWeeks(stDate Date, short NumberOfWeeksToSubtract) {
+
+		for (short i = 0; i < NumberOfWeeksToSubtract * 7; i++) {
+			Date = DecreaseDateByOneDay(Date);
+		}
+		return Date;
+	}
+
+	stDate DecreaseDateByOneMonth(stDate Date) {
+
+		if (IsFirstMonthInYear(Date.Month))
+			Date.Year--, Date.Month = 12;
+		else
+			Date.Month--;
+
+		// In Case The Number Of Days In The Original Month Is Greater Than This Month
+		short DaysInCurrentMonth = NumberOfDaysInMonth(Date.Month, Date.Year);
+
+		if (Date.Day > DaysInCurrentMonth)
+			Date.Day = DaysInCurrentMonth;
+
+
+		return Date;
+	}
+
+	stDate DecreaseDateByXMonths(stDate Date, short NumberOfMonthsToSubtract) {
+		for (short i = 0; i < NumberOfMonthsToSubtract; i++) {
+			Date = DecreaseDateByOneMonth(Date);
+		}
+
+		return Date;
+	}
+	stDate DecreaseDateByOneYear(stDate Date) {
+		Date.Year--;
+
+		return Date;
+	}
+	stDate DecreaseDateByXYears(stDate Date, short NumberOfYearsToSubtract) {
+
+		for (short i = 0; i < NumberOfYearsToSubtract; i++) {
+
+			Date = DecreaseDateByOneYear(Date);
+		}
+		return Date;
+	}
+
+	stDate DecreaseDateByXYearsFaster(stDate Date, short NumberOfYearsToSubtract) {
+		Date.Year -= NumberOfYearsToSubtract;
+
+		return Date;
+	}
+
+
+	stDate DecreaseDateByOneDecade(stDate Date) {
+		Date.Year -= 10;
+
+		return Date;
+	}
+	stDate DecreaseDateByXDecades(stDate Date, short NumberOfDecadesToSubtract) {
+
+		for (short i = 0; i < NumberOfDecadesToSubtract; i++) {
+
+			Date = DecreaseDateByOneDecade(Date);
+		}
+		return Date;
+	}
+
+	stDate DecreaseDateByXDecadesFaster(stDate Date, short NumberOfDecadesToSubtract) {
+		Date.Year -= NumberOfDecadesToSubtract * 10;
+
+		return Date;
+	}
+
+
+	stDate DecreaseDateByOneCentury(stDate Date) {
+		Date.Year -= 100;
+
+		return Date;
+	}
+
+
+	stDate DecreaseDateByOneMillennium(stDate Date) {
+		Date.Year -= 1000;
+
+		return Date;
+	}
 	void SwapDates(stDate &Date1, stDate &Date2) {
 		stDate TempDate;
 		TempDate.Year = Date1.Year;
