@@ -295,7 +295,7 @@
     <ClCompile Include="courses\8\2.cpp" />
     <ClCompile Include="courses\8\20_32.cpp" />
     <ClCompile Include="courses\8\3.cpp" />
-    <ClCompile Include="courses\8\33.cpp" />
+    <ClCompile Include="courses\8\33-46.cpp" />
     <ClCompile Include="courses\8\4.cpp" />
     <ClCompile Include="courses\8\5.cpp" />
     <ClCompile Include="courses\8\6.cpp" />

@@ -82,7 +82,5 @@ int main() {
 	Date1 = IncreaseDateByOneMillennium(Date1);
 	printf("After Adding 1 Millennium : %d/%d/%d   \n", Date1.Day, Date1.Month, Date1.Year);
 
-
-
 	return 0;
 }
