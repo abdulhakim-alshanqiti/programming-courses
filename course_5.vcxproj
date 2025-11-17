@@ -125,6 +125,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Libs\Date.h" />
     <ClInclude Include="Libs\MyLib.h" />
   </ItemGroup>
   <ItemGroup>
@@ -135,7 +136,7 @@
     <Text Include="courses\7\Projects\extra.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="courses\8\33-46.cpp" />
+    <ClCompile Include="courses\8\56.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

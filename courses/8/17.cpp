@@ -2,7 +2,7 @@
 #include<iomanip>
 #include <string>
 #include <cmath>
-
+#include "../../Libs/Date.h"
 #include "../../Libs/MyLib.h"
 #include <cstdio>
 using namespace std;
@@ -10,7 +10,7 @@ using namespace std;
 using namespace Input;
 using namespace Output;
 using namespace Strings;
-using namespace Time;
+using namespace Date;
 
 //short FindDiffBettwenTwoDates(stDate Date1, stDate Date2, bool WithLastDay = false) {
 //	short CountDiff = 1;
