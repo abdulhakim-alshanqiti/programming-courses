@@ -14,6 +14,10 @@ namespace Date {
 		short Month = 1;
 		short Day = 1;
 	};
+	struct stPeriod {
+		stDate Start = { 1,1,1 };
+		stDate End = { 1,1,1 };
+	};
 	stDate ReadDate(short Year = 0, short Month = 0, short Day = 0) {
 		stDate Date;
 		Date.Year = (Year == 0) ? ReadPositiveNumber("Enter A Year") : Year;
@@ -163,6 +167,28 @@ namespace Date {
 
 		return (Date1.Year < Date2.Year) ? true : ((Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month ? true : (Date1.Month == Date2.Month ? Date1.Day < Date2.Day : false)) : false); 
 
+	}
+	bool IsDate1AfterDate2(stDate Date1, stDate Date2) {
+		return IsDate1BeforeDate2(Date2, Date1);
+	}
+	enum enDateCompare { Before = -1, Equal, After };
+	string DateCompareToString(enDateCompare Compare) {
+		switch (Compare) {
+
+		case Before: return "Before";
+		case Equal: return "Equal";
+		case After: return "After";
+
+		}
+
+	}
+	enDateCompare CompareDates(stDate Date1, stDate Date2) {
+		if (IsDate1BeforeDate2(Date1, Date2))
+			return Before;
+		if (IsDate1AfterDate2(Date1, Date2))
+			return After;
+		else
+			return Equal;
 	}
 
 	stDate IncreaseDateByOneDay(stDate Date) {
@@ -432,7 +458,7 @@ namespace Date {
 
 
 	}
-	short GetDiffBettwenTwoDates(stDate Date1, stDate Date2, bool WithLastDay = false) {
+	short GetDifferenceInDays(stDate Date1, stDate Date2, bool IncludingLastDay = false) {
 		short CountDiff = 0;
 		short FlagValue = 1;
 		bool IsBefore = IsDate1BeforeDate2(Date1, Date2);
@@ -452,9 +478,11 @@ namespace Date {
 		else
 			return 0;
 
-		return WithLastDay ? CountDiff * FlagValue : (++CountDiff) * FlagValue;
+		return IncludingLastDay ? ++CountDiff * FlagValue: CountDiff * FlagValue ;
 	}
-
+	short GetPeriodLengthInDays(stPeriod Period, bool IncludingLastDay = false) {
+		return GetDifferenceInDays(Period.Start, Period.End, IncludingLastDay);
+	}
 	stDate GetSystemDate() {
 		stDate Date;
 		time_t t = time(0);
@@ -496,7 +524,7 @@ namespace Date {
 		stDate EndOfMonth = Date;
 		EndOfMonth.Day = NumberOfDaysInMonth(Date);
 
-		return GetDiffBettwenTwoDates(Date, EndOfMonth, true);
+		return GetDifferenceInDays(Date, EndOfMonth, true);
 	}
 
 	short DaysUntillEndOfYear(stDate Date) {
@@ -505,12 +533,24 @@ namespace Date {
 		EndOfYear.Month = 12;
 		EndOfYear.Year = Date.Year;
 
-		return GetDiffBettwenTwoDates(Date, EndOfYear, true);
+		return GetDifferenceInDays(Date, EndOfYear, true);
 	}
 	short HowManyDaysHavePassedSince(stDate Date, bool IncludeLastDay = true) {
-		return GetDiffBettwenTwoDates(Date, GetSystemDate(), IncludeLastDay);
+		return GetDifferenceInDays(Date, GetSystemDate(), IncludeLastDay);
 	}
 
+	bool IsPeriod1AndPeriod2Overlapping(stPeriod Period1, stPeriod Period2) {
+
+
+		if (
+			CompareDates(Period1.End, Period2.Start) == Before ||
+			CompareDates(Period2.End, Period1.Start) == Before
+			)
+			return false;
+
+		else
+			return true;
+	}
 
 	void PrintMonthCalendar(short Month, short Year)
 	{

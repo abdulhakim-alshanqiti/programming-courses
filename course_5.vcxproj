@@ -136,7 +136,8 @@
     <Text Include="courses\7\Projects\extra.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="courses\8\56.cpp" />
+    <ClCompile Include="courses\8\59.cpp" />
+    <ClCompile Include="courses\8\60.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

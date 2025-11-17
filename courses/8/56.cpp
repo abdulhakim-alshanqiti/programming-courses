@@ -15,11 +15,22 @@ using namespace Strings;
 using namespace Date;
 
 
+//bool IsDate1AfterDate2(stDate Date1, stDate Date2) {
+//	return IsDate1BeforeDate2(Date2,Date1);
+//}
+
 
 int main() {
-	stDate StartOfVecation = ReadDate(2022, 1, 1);
+	stDate Date1 = ReadDate(2025, 1, 1);
+	stDate Date2 = ReadDate(2022, 1, 1);
 
-	printf("Start Of Vecation is %s %d/%d/%d   \n", GetDayShortName(StartOfVecation).c_str(), StartOfVecation.Day, StartOfVecation.Month, StartOfVecation.Year);
+
+	printf("Date1 is %s %d/%d/%d   \n", GetDayShortName(Date1).c_str(), Date1.Day, Date1.Month, Date1.Year);
+
+	printf("Date2 is %s %d/%d/%d   \n", GetDayShortName(Date2).c_str(), Date2.Day, Date2.Month, Date2.Year);
+
+	printf("Is Date1 After Date2 : %s   \n", BoolToTrueAndFalse(IsDate1AfterDate2(Date1, Date2)).c_str());
+
 
 	return 0;
 }
