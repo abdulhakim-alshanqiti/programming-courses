@@ -98,8 +98,8 @@ enum enTransactionMenuScreens {
 const string ClientsFilePath = "./courses/8/Projects/Project1.txt";
 const string UsersFilePath = "./courses/8/Projects/Project1Users.txt";
 
-void ShowMainMenuScreen();
-void ShowTransactionsScreen();
+void ShowMainMenuScreen(stUser User);
+void ShowTransactionsScreen(stUser User);
 
 
 void PrintLine(string StringToRepeat = "_") {
@@ -552,91 +552,98 @@ void ShowTotalBalancesScreen() {
 	Printl("Total Balances : " + to_string(TotalBalances));
 }
 
-void GoBackToMainMenu() {
+void GoBackToMainMenu(stUser User) {
 	PrintLine();
 	Printl("\t\tPress Any Key To Go Back To Main Menu");
 	PrintLine();
 
 	system("pause>0");
-	ShowMainMenuScreen();
+	ShowMainMenuScreen(User);
 }
 
-void GoBackToTransactionsMenu() {
+void GoBackToTransactionsMenu(stUser User) {
 	PrintLine();
 	Printl("\t\tPress Any Key To Go Back To Transactions Menu");
 	PrintLine();
 
 	system("pause>0");
-	ShowTransactionsScreen();
+	ShowTransactionsScreen(User);
 }
-void GoToSubTransactionScreens(enTransactionMenuScreens Screen) {
+void GoToSubTransactionScreens(stUser User,enTransactionMenuScreens Screen) {
 	switch (Screen)
 	{
 	case Deposit:
 		system("cls");
 		ShowDepositScreen();
-		GoBackToTransactionsMenu();
+		GoBackToTransactionsMenu(User);
 		break;
 
 	case Withdraw:
 		system("cls");
 		ShowWithDrawScreen();
-		GoBackToTransactionsMenu();
+		GoBackToTransactionsMenu(User);
 		break;
 	case TotalBalances:
 		system("cls");
 		ShowTotalBalancesScreen();
-		GoBackToTransactionsMenu();
+		GoBackToTransactionsMenu(User);
 		break;
 	case MainMenu:
-		ShowMainMenuScreen();
+		GoBackToMainMenu(User);
 		break;
 
 	}
 
 }
-void GoToMainMenuScreens(enMainMenuScreens Screen) {
+void ShowAccessDenied() {
+	PrintLine("=");
+	Printl("\t Access Denied");
+	PrintLine("=");
+}
+void GoToMainMenuScreens(stUser User, enMainMenuScreens Screen) {
 	switch (Screen)
 	{
 	case ClientList:
 		system("cls");
+		User.Perms.ViewClientList ? ShowClientListScreen() : ShowAccessDenied();
 
-		ShowClientListScreen();
-		GoBackToMainMenu();
+	
+		GoBackToMainMenu(User);
 		break;
 	case NewClient:
 		system("cls");
 
-		ShowNewClientScreen();
+		User.Perms.AddClient ? ShowNewClientScreen() : ShowAccessDenied();
 
-		GoBackToMainMenu();
+
+		GoBackToMainMenu(User);
 		break;
 	case DeleteClient:
 		system("cls");
 
-		ShowDeleteClientScreen();
+		User.Perms.DeleteClient ? ShowDeleteClientScreen() : ShowAccessDenied();
 
-		GoBackToMainMenu();
+		GoBackToMainMenu(User);
 		break;
 	case UpdateClientInfo:
 		system("cls");
 
-		ShowUpdateClientScreen();
+		User.Perms.UpdateClient ? ShowUpdateClientScreen() : ShowAccessDenied();
 
-		GoBackToMainMenu();
+		GoBackToMainMenu(User);
 		break;
 	case FindClient:
 		system("cls");
 
-		ShowFindClientScreen();
+		User.Perms.FindClient ? ShowFindClientScreen() : ShowAccessDenied();
 
-		GoBackToMainMenu();
+		GoBackToMainMenu(User);
 		break;
 
 	case Transactions:
 		system("cls");
 
-		ShowTransactionsScreen();
+		User.Perms.ViewTransactions ? ShowTransactionsScreen(User) : ShowAccessDenied();
 		break;
 	case Exit:
 		system("cls");
@@ -646,7 +653,7 @@ void GoToMainMenuScreens(enMainMenuScreens Screen) {
 		break;
 	}
 }
-void ShowTransactionsScreen() {
+void ShowTransactionsScreen(stUser User) {
 	system("cls");
 	PrintLine("=");
 
@@ -662,10 +669,10 @@ void ShowTransactionsScreen() {
 	enTransactionMenuScreens Screen = (enTransactionMenuScreens)
 		ReadNumberInRange("What Do You Want To Do ? \nEnter a Number [1 to 4]", 1, 4);
 
-	GoToSubTransactionScreens(Screen);
+	GoToSubTransactionScreens(User,Screen);
 
 }
-void ShowMainMenuScreen() {
+void ShowMainMenuScreen(stUser User) {
 	system("cls");
 	PrintLine("=");
 
@@ -684,7 +691,7 @@ void ShowMainMenuScreen() {
 	enMainMenuScreens Screen = (enMainMenuScreens)
 		ReadNumberInRange("What Do You Want To Do ? \nEnter a Number [1 to 7]", 1, 7);
 
-	GoToMainMenuScreens(Screen);
+	GoToMainMenuScreens(User, Screen);
 
 }
 
@@ -756,14 +763,14 @@ void Login() {
 
 	stUser User;
 	vector<stUser> vUsers = GetUsersFromFile();
-	FindUserByUsernameAndPassword(User, vUsers, Username,Password);
-	PrintUserPerms(User);
+	FindUserByUsernameAndPassword(User, vUsers, Username, Password);
+	//PrintUserPerms();
+	ShowMainMenuScreen(User);
 
 }
 
 int main() {
 
-	//ShowMainMenuScreen();
 
 	Login();
 

@@ -128,6 +128,9 @@
     <ClInclude Include="Libs\Date.h" />
     <ClInclude Include="Libs\MyLib.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="courses\8\Projects\Project1.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
