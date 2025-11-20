@@ -128,17 +128,6 @@
     <ClInclude Include="Libs\Date.h" />
     <ClInclude Include="Libs\MyLib.h" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="courses\7\Projects\a.txt" />
-    <Text Include="courses\7\Projects\b.txt" />
-    <Text Include="courses\7\Projects\project.txt" />
-    <Text Include="courses\7\Projects\project2.txt" />
-    <Text Include="courses\7\Projects\extra.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="courses\8\59.cpp" />
-    <ClCompile Include="courses\8\60.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

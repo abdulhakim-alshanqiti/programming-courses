@@ -13,25 +13,31 @@ using namespace Output;
 using namespace Strings;
 using namespace Date;
 
-//short GetPeriodLengthInDays(stPeriod Period,bool IncludingLastDay=false) {
-//	return GetDifferenceInDays(Period.Start, Period.End,IncludingLastDay);
-//}
 
+//bool IsDateInPeriod(stPeriod Period, stDate Date) {
+//
+//	return !(
+//		CompareDates(Date, Period.Start) == enDateCompare::Before ||
+//		CompareDates(Date, Period.End) == enDateCompare::After
+//		);
+//
+//}
 int main() {
 
 	stPeriod Period1 = {
 		{2022,1,1 },
-		{2022,1,2}
+		{2022,2,2}
 	};
 
+	stDate Date1 = { 2022,1,25 };
 
 
 	printf("Start Of The Period 1 is  %d/%d/%d   \n", Period1.Start.Day, Period1.Start.Month, Period1.Start.Year);
 
 	printf("End Of The Period 1 is  %d/%d/%d   \n", Period1.End.Day, Period1.End.Month, Period1.End.Year);
 
-	printf("Period 1 Length Is %d (Without End Day)  \n", GetPeriodLengthInDays(Period1));
-	printf("Period 1 Length Is %d (Including End Day)  \n", GetPeriodLengthInDays(Period1, true));
+	printf("Is Date In Period ? %s   \n",BoolToTrueAndFalse( IsDateInPeriod(Period1,Date1) ).c_str() );
+
 
 
 	return 0;

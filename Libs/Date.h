@@ -6,24 +6,28 @@
 #include <ctime>
 #include "MyLib.h"
 using Input::ReadPositiveNumber;
-
+using Input::ReadStringWS;
+using Output::Printl;
+using Strings::SplitString;
 namespace Date {
 
 	struct stDate {
-		short Year = 1;
-		short Month = 1;
-		short Day = 1;
+		short Day = 0;
+		short Month = 0;
+		short Year = 0;
 	};
+
 	struct stPeriod {
-		stDate Start = { 1,1,1 };
-		stDate End = { 1,1,1 };
+		stDate Start = { 0,0,0 };
+		stDate End = { 0,0,0 };
 	};
-	stDate ReadDate(short Year = 0, short Month = 0, short Day = 0) {
-		stDate Date;
-		Date.Year = (Year == 0) ? ReadPositiveNumber("Enter A Year") : Year;
-		Date.Month = (Month == 0) ? ReadPositiveNumber("Enter A Month") : Month;
-		Date.Day = (Day == 0) ? ReadPositiveNumber("Enter A Day") : Day;
-		return Date;
+	string DateToString(stDate Date) {
+		return  to_string(Date.Day) + "/" + to_string(Date.Month) + "/" + to_string(Date.Year);
+	}
+
+	stDate DateFromString(string DateString) {
+		vector<string> vDate = SplitString(DateString, "/");
+		return 	stDate(stoi(vDate[0]), stoi(vDate[1]), stoi(vDate[2]));
 	}
 
 
@@ -57,7 +61,7 @@ namespace Date {
 		return (Day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12)) % 7;
 	}
 	short DayOfWeekOrder(stDate Date) {
-		return DayOfWeekOrder(Date.Year,Date.Month,Date.Day);
+		return DayOfWeekOrder(Date.Year, Date.Month, Date.Day);
 	}
 	bool IsLeapYear(short year) {
 		return   (year % 400 == 0) || (year % 100 != 0 && year % 4 == 0);
@@ -71,13 +75,13 @@ namespace Date {
 		return	(Month == 2) ? (IsLeapYear(Year) ? 29 : 28) : NumberOfDaysInEachMonth[Month];
 	}
 	short NumberOfDaysInMonth(stDate Date) {
-		return NumberOfDaysInMonth( Date.Month, Date. Year);
+		return NumberOfDaysInMonth(Date.Month, Date.Year);
 	}
 	short NumberOfDaysInYear(short Year) {
 		return  (IsLeapYear(Year) ? 366 : 365);
 	}
 	short NumberOfDaysInYear(stDate Date) {
-		return NumberOfDaysInYear(Date.Year) ;
+		return NumberOfDaysInYear(Date.Year);
 	}
 
 
@@ -98,6 +102,51 @@ namespace Date {
 	}
 	int NumberOfSecondsInYear(short Year) {
 		return NumberOfMinutesInYear(Year) * 60;
+	}
+
+	bool IsDateValid(stDate Date) {
+		return
+			(Date.Year > 0
+				&& (13 > Date.Month > 0)
+				&& NumberOfDaysInMonth(Date) >= Date.Day > 0);
+	}
+
+	stDate ReadDate(short Day = 0,short Month = 0, short Year = 0) {
+		stDate Date;
+
+		while (!IsDateValid(Date)) {
+			Date.Year = (Year == 0) ? ReadPositiveNumber("Enter A Year") : Year;
+			Date.Month = (Month == 0) ? ReadPositiveNumber("Enter A Month") : Month;
+			Date.Day = (Day == 0) ? ReadPositiveNumber("Enter A Day") : Day;
+			if (!IsDateValid(Date))
+				Printl("Please Enter A Valid Date");
+		}
+		return Date;
+	}
+
+	stDate ReadDate(stDate Date) {
+		return ReadDate(Date.Year,Date.Month,Date.Day);
+	}
+	stDate ReadDate(string Message) {
+		cout << Message << endl;
+		return ReadDate();
+	}
+	stDate ReadDateString() {
+		stDate Date;
+		bool DateIsValid = false;
+		do {
+			string DateString =
+				ReadStringWS("Please Enter A day In This Format dd/mm/yyyy ");
+
+			Date = DateFromString(DateString);
+			DateIsValid = IsDateValid(Date);
+			if (!DateIsValid) {
+				Printl("The Date You Entered Isn't Valid, Please Try Again");
+			}
+
+		} while (!DateIsValid);
+
+		return Date;
 	}
 
 
@@ -483,6 +532,15 @@ namespace Date {
 	short GetPeriodLengthInDays(stPeriod Period, bool IncludingLastDay = false) {
 		return GetDifferenceInDays(Period.Start, Period.End, IncludingLastDay);
 	}
+	bool IsDateInPeriod(stPeriod Period, stDate Date) {
+
+		return !(
+			CompareDates(Date, Period.Start) == enDateCompare::Before ||
+			CompareDates(Date, Period.End) == enDateCompare::After
+			);
+
+	}
+
 	stDate GetSystemDate() {
 		stDate Date;
 		time_t t = time(0);
@@ -539,7 +597,7 @@ namespace Date {
 		return GetDifferenceInDays(Date, GetSystemDate(), IncludeLastDay);
 	}
 
-	bool IsPeriod1AndPeriod2Overlapping(stPeriod Period1, stPeriod Period2) {
+	bool IsPeriodsOverlapping(stPeriod Period1, stPeriod Period2) {
 
 
 		if (
@@ -551,6 +609,26 @@ namespace Date {
 		else
 			return true;
 	}
+	short CountOverlappingDays(stPeriod Period1, stPeriod Period2) {
+		if (!IsPeriodsOverlapping(Period1, Period2))
+			return 0;
+
+		bool IsPeriod1Longer = GetPeriodLengthInDays(Period1) > GetPeriodLengthInDays(Period2);
+		if (IsPeriod1Longer)
+			swap(Period1, Period2);/// So We Don't go Through The Longer One
+
+		/// Now Period1 is Shorter Than Period2 so we go From The Start Of Period1 To The End Of Period1
+		/// We Check Each Day If Its In Period2 Or Not
+
+		int OverlapDays = 0;
+		while (CompareDates(Period1.Start, Period1.End) == Before) {
+			if (IsDateInPeriod(Period2, Period1.Start))
+				OverlapDays++;
+			Period1.Start = IncreaseDateByOneDay(Period1.Start);
+		}
+		return OverlapDays;
+	}
+
 
 	void PrintMonthCalendar(short Month, short Year)
 	{

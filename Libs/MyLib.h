@@ -178,28 +178,39 @@ namespace Strings {
 		}
 		return S1;
 	}
-	string FindAndReplace(string String, string Find, string Replace, bool MatchCase = true) {
-		vector<string> vWords = SplitString(String, " ");
-		if (MatchCase) {
+	string FindAndReplace(string String, string Find, string Replace) {
 
-			for (string& Word : vWords) {
-				if (Word == Find) {
-					Word = Replace;
-				}
-			}
-
-		}
-		else {
-			for (string& Word : vWords) {
-				if (LowerAllLetters(Word) == LowerAllLetters(Find)) {
-					Word = Replace;
-				}
-			}
+		short pos = String.find(Find);
+		while (pos != std::string::npos) {
+			String = String.replace(pos, Find.length(), Replace);
+			pos = String.find(Find);
 		}
 
-		return JoinString(vWords, " ");
 
+		return String;
 	}
+	//string BrokenFindAndReplace(string String, string Find, string Replace, bool MatchCase = true) {
+	//	vector<string> vWords = SplitString(String, " ");
+	//	if (MatchCase) {
+
+	//		for (string& Word : vWords) {
+	//			if (Word == Find) {
+	//				Word = Replace;
+	//			}
+	//		}
+
+	//	}
+	//	else {
+	//		for (string& Word : vWords) {
+	//			if (LowerAllLetters(Word) == LowerAllLetters(Find)) {
+	//				Word = Replace;
+	//			}
+	//		}
+	//	}
+
+	//	return JoinString(vWords, " ");
+
+	//}
 }
 namespace Input {
 	void SeedRandomness() {
