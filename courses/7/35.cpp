@@ -38,19 +38,19 @@ using namespace std;
 
 void PrintLetters(string String) {
 	printf("Words in String:\n");
-	string Seperator = " ";
+	string Separator = " ";
 	string Word = "";
 	short pos = 0;
 
 
-	while ((pos = String.find(Seperator)) != std::string::npos)
+	while ((pos = String.find(Separator)) != std::string::npos)
 	{
 		Word = String.substr(0, pos);
 
 		if (Word != "")
 			cout << Word << endl;
 
-		String.erase(0, pos + Seperator.length());
+		String.erase(0, pos + Separator.length());
 
 	}
 	if (String != "")

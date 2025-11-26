@@ -1,0 +1,72 @@
+#include <iostream>
+#include<iomanip>
+#include "../../Libs/MyLib.h"
+#include "../../Libs/Date.h"
+using namespace Input;
+using namespace Output;
+using namespace Strings;
+using namespace Date;
+using namespace std;
+
+class clsPerson {
+private:
+
+	string _FirstName = "";
+	string _LastName = "";
+	string _Separator = " ";
+	int _Id = RandomNumber(1,100);
+public:
+
+	void SetFirstName(string NewName) {
+		 _FirstName = NewName;
+	}
+	void SetLastName(string NewName) {
+		 _LastName = NewName;
+	}
+	string FirstName() {
+		return _FirstName;
+	}
+	string LastName() {
+		return _LastName;
+	}
+
+
+	string FullName() {
+		return  _FirstName + _Separator + _LastName;
+	};
+
+	int Id() {
+		return _Id;
+	}
+	
+
+};
+int main() {
+	SeedRandomness();
+
+	clsPerson Person1;
+
+	Person1.SetFirstName("Abdulhakim");
+	Person1.SetLastName("Alshanqiti");
+
+	Printl("Person 1 First Name :"+Person1.FirstName());
+	Printl("Person 1 Last Name :"+Person1.LastName());
+
+	Printl("Person 1 Full Name :" + Person1.FullName());
+	Printl("Person 1 Id :" + to_string( Person1.Id()) );
+
+
+	clsPerson Person2;
+
+	Person2.SetFirstName("Kemo");
+	Person2.SetLastName("Nas");
+
+	Printl("Person 2 First Name :" + Person2.FirstName());
+	Printl("Person 2 Last Name :" + Person2.LastName());
+
+	Printl("Person 2 Full Name :" + Person2.FullName());
+	Printl("Person 2 Id :" + to_string(Person2.Id()));
+
+
+	return 0;
+}

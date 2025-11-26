@@ -9,14 +9,14 @@ using namespace std;
 
 
 
-vector<string> SplitString(string String, string Seperator) {
+vector<string> SplitString(string String, string Separator) {
 	short pos = 0;
 	string sWord = "";
 
 	short WordCount = 0;
 	vector<string> vString;
 
-	while ((pos = String.find(Seperator)) != std::string::npos)
+	while ((pos = String.find(Separator)) != std::string::npos)
 	{
 		sWord = String.substr(0, pos);
 
@@ -25,7 +25,7 @@ vector<string> SplitString(string String, string Seperator) {
 			vString.push_back(sWord);
 		}
 
-		String.erase(0, pos + Seperator.length());
+		String.erase(0, pos + Separator.length());
 	}
 
 	if (String != "")

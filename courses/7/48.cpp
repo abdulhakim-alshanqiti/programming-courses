@@ -42,20 +42,20 @@ stClientRecord NewClientRecord() {
 
 	return ClientRecord;
 }
-string ClientRecordToString(stClientRecord Client, string Seperator = "#//#") {
+string ClientRecordToString(stClientRecord Client, string Separator = "#//#") {
 	string sClientRecord = "";
 
-	sClientRecord += Client.AccountNumber + Seperator;
-	sClientRecord += Client.PinCode + Seperator;
-	sClientRecord += Client.Name + Seperator;
-	sClientRecord += Client.Phone + Seperator;
+	sClientRecord += Client.AccountNumber + Separator;
+	sClientRecord += Client.PinCode + Separator;
+	sClientRecord += Client.Name + Separator;
+	sClientRecord += Client.Phone + Separator;
 	sClientRecord += to_string(Client.AccountBalance);
 
 	return sClientRecord;
 }
 
-stClientRecord ClientRecordFromString(string sClientRecord, string Seperator = "#//#") {
-	vector<string> vSections = SplitString(sClientRecord, Seperator);
+stClientRecord ClientRecordFromString(string sClientRecord, string Separator = "#//#") {
+	vector<string> vSections = SplitString(sClientRecord, Separator);
 	stClientRecord ClientRecord;
 
 	ClientRecord.AccountNumber = vSections[0];

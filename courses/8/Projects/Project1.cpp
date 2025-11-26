@@ -189,22 +189,22 @@ bool DoesUserExistByUsername(string Username, vector<stUser>& vUsers) {
 
 	return false;
 }
-string ClientRecordToString(stClientRecord Client, string Seperator = "#//#") {
+string ClientRecordToString(stClientRecord Client, string Separator = "#//#") {
 	string sClientRecord = "";
 
-	sClientRecord += Client.AccountId + Seperator;
-	sClientRecord += Client.PinCode + Seperator;
-	sClientRecord += Client.Name + Seperator;
-	sClientRecord += Client.Phone + Seperator;
+	sClientRecord += Client.AccountId + Separator;
+	sClientRecord += Client.PinCode + Separator;
+	sClientRecord += Client.Name + Separator;
+	sClientRecord += Client.Phone + Separator;
 	sClientRecord += to_string(Client.AccountBalance);
 
 	return sClientRecord;
 }
-string UserToString(stUser User, string Seperator = "#//#") {
+string UserToString(stUser User, string Separator = "#//#") {
 	string sUser = "";
 
-	sUser += User.Username + Seperator;
-	sUser += User.Password + Seperator;
+	sUser += User.Username + Separator;
+	sUser += User.Password + Separator;
 	sUser += to_string(User.Perms);
 
 	return sUser;
@@ -245,9 +245,9 @@ short ReadPerms( ) {
 
 
 
-stClientRecord ClientRecordFromString(string sClientRecord, string Seperator = "#//#") {
+stClientRecord ClientRecordFromString(string sClientRecord, string Separator = "#//#") {
 
-	vector<string> vSections = SplitString(sClientRecord, Seperator);
+	vector<string> vSections = SplitString(sClientRecord, Separator);
 	stClientRecord ClientRecord;
 
 	ClientRecord.AccountId = vSections[0];
@@ -1124,9 +1124,9 @@ void ShowMainMenuScreen() {
 
 
 
-stUser UserFromString(string sUser, string Seperator = "#//#") {
+stUser UserFromString(string sUser, string Separator = "#//#") {
 
-	vector<string> vSections = SplitString(sUser, Seperator);
+	vector<string> vSections = SplitString(sUser, Separator);
 	stUser User;
 
 	User.Username = vSections[0];

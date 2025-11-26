@@ -1,13 +1,13 @@
 #include <iostream>
 using namespace std;
-string RowSeperator(int i) {
-	string seperator = "\n";
+string RowSeparator(int i) {
+	string Separator = "\n";
 	while (i >= 1) {
-		seperator += "-";
+		Separator += "-";
 		i--;
 	}
 
-	return seperator;
+	return Separator;
 }
 
 void printTableHeader() {
@@ -16,7 +16,7 @@ void printTableHeader() {
 	for (int i = 1; i <= 10; i++) {
 		cout << i << "\t";
 	}
-	cout << RowSeperator(86);
+	cout << RowSeparator(86);
 }
 
 

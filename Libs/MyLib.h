@@ -41,14 +41,14 @@ namespace Strings {
 	}
 
 
-	vector<string> SplitString(string String, string Seperator) {
+	vector<string> SplitString(string String, string Separator) {
 		short pos = 0;
 		string sWord = "";
 
 		short WordCount = 0;
 		vector<string> vString;
 
-		while ((pos = String.find(Seperator)) != std::string::npos)
+		while ((pos = String.find(Separator)) != std::string::npos)
 		{
 			sWord = String.substr(0, pos);
 
@@ -57,7 +57,7 @@ namespace Strings {
 				vString.push_back(sWord);
 			}
 
-			String.erase(0, pos + Seperator.length());
+			String.erase(0, pos + Separator.length());
 		}
 
 		if (String != "")
@@ -68,7 +68,7 @@ namespace Strings {
 		return vString;
 
 	}
-	string ReverseWords(string sWords, string Seperator) {
+	string ReverseWords(string sWords, string Separator) {
 		string ReversedString;
 		vector<string> vWords = SplitString(sWords, " ");
 		vector<string>::iterator iter = vWords.end();;
@@ -76,30 +76,30 @@ namespace Strings {
 
 		while (iter != vWords.begin()) {
 			iter--;
-			ReversedString += *iter + Seperator;
+			ReversedString += *iter + Separator;
 		}
 
-		ReversedString = ReversedString.substr(0, ReversedString.length() - Seperator.length());
+		ReversedString = ReversedString.substr(0, ReversedString.length() - Separator.length());
 		return ReversedString;
 	}
-	string JoinString(vector<string>& vString, string Seperator) {
+	string JoinString(vector<string>& vString, string Separator) {
 		string Result = "";
 		for (string& String : vString) {
-			Result += String + Seperator;
+			Result += String + Separator;
 		}
 
 
-		return Result.substr(0, Result.length() - Seperator.length());
+		return Result.substr(0, Result.length() - Separator.length());
 	}
-	string JoinString(string String[], short length, string Seperator) {
+	string JoinString(string String[], short length, string Separator) {
 		string Result = "";
 		for (short i = 0; i < length; i++)
 		{
-			Result += String[i] + Seperator;
+			Result += String[i] + Separator;
 		}
 
 
-		return Result.substr(0, Result.length() - Seperator.length());
+		return Result.substr(0, Result.length() - Separator.length());
 	}
 
 	string TrimLeft(string S1) {
