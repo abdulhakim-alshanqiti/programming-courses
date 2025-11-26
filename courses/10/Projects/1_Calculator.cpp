@@ -88,7 +88,7 @@ public:
 			break;
 
 			case None:
-				printf("There Is No Operation To Show The Result is = %d ", _Result);
+				printf("There Is No Operation To Show The Result is = %d \n", _Result);
 			break;
 
 			default: 
