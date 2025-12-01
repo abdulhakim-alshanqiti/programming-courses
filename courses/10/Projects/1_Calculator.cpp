@@ -1,6 +1,6 @@
 #include <iostream>
-#include "../../Libs/MyLib.h"
-#include "../../Libs/Date.h"
+#include "../../../Libs/MyLib.h"
+#include "../../../Libs/Date.h"
 using namespace Input;
 using namespace Output;
 using namespace Strings;

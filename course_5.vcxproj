@@ -129,7 +129,7 @@
     <ClInclude Include="Libs\MyLib.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="courses\10\Projects\1_Calculator.cpp" />
+    <ClCompile Include="courses\10\14.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
