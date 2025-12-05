@@ -11,7 +11,7 @@ int RandomNumber(int from, int to) {
 	return rand() % (to - from + 1) + from;
 }
 
-char RandomCharechter(enCharTypes type) {
+char RandomCharacter(enCharTypes type) {
 
 	switch (type) {
 
@@ -35,7 +35,7 @@ char RandomCharechter(enCharTypes type) {
 string GenerateWord(enCharTypes type, short length) {
 	string word = "";
 	for (int i = 1; i <= length; i++) {
-		word += RandomCharechter(type);
+		word += RandomCharacter(type);
 	}
 	return word;
 }
