@@ -1,7 +1,7 @@
 #include <iostream>
 #include "clsPerson.h"
 #include "clsBankClient.h"
-#include "clsInputValidate.h"
+#include "../../../../libs/clsInputValidate.h"
 
 void DeleteClient()
 {
