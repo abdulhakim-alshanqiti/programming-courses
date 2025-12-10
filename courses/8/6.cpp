@@ -1,6 +1,6 @@
 #include <iostream>
 #include<iomanip>
-#include "../../Libs/MyLib.h"
+#include "../../libs/MyLib.h"
 #include <string>
 using namespace Input;
 using namespace Output;

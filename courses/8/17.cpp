@@ -2,8 +2,8 @@
 #include<iomanip>
 #include <string>
 #include <cmath>
-#include "../../Libs/Date.h"
-#include "../../Libs/MyLib.h"
+#include "../../libs/Date.h"
+#include "../../libs/MyLib.h"
 #include <cstdio>
 using namespace std;
 

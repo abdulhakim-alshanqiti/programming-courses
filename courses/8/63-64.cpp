@@ -3,8 +3,8 @@
 #include <string>
 #include <cmath>
 
-#include "../../Libs/MyLib.h"
-#include "../../Libs/Date.h"
+#include "../../libs/MyLib.h"
+#include "../../libs/Date.h"
 #include <cstdio>
 
 using namespace std;
@@ -32,7 +32,7 @@ stDate ReadDateString() {
 			ReadStringWS("Please Enter A day In This Format dd/mm/yyyy ");
 
 		Date = DateFromString(DateString);
-		DateIsValid = IsDateValid(Date);
+		DateIsValid = IsValidDate(Date);
 		if (!DateIsValid) {
 			Printl("The Date You Entered Isn't Valid, Please Try Again");
 		}

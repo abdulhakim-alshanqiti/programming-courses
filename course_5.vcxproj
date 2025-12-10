@@ -125,17 +125,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Libs\clsDate.h" />
-    <ClInclude Include="Libs\clsEmployee.h" />
-    <ClInclude Include="Libs\clsPeriod.h" />
-    <ClInclude Include="Libs\clsPerson.h" />
-    <ClInclude Include="Libs\clsUtils.h" />
-    <ClInclude Include="Libs\Date.h" />
-    <ClInclude Include="Libs\MyLib.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsAddNewClientScreen.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsAddNewUserScreen.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsBankClient.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsClientListScreen.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsDeleteClientScreen.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsDeleteUserScreen.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsDepositScreen.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsFindClientScreen.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsListUsersScreen.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsMainScreen.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsManageUsersScreen.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsPerson.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsScreen.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsTotalBalancesScreen.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsTransactionsScreen.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsUpdateClientScreen.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsUser.h" />
+    <ClInclude Include="courses\11\Project-3\21\clsWithdrawScreen.h" />
+    <ClInclude Include="libs\clsDate.h" />
+    <ClInclude Include="libs\clsInputValidate.h" />
+    <ClInclude Include="libs\clsPeriod.h" />
+    <ClInclude Include="libs\clsUtils.h" />
+    <ClInclude Include="libs\MyLib.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="courses\11\1.cpp" />
-    <ClCompile Include="Libs\clsString.h" />
+    <ClCompile Include="courses\11\Project-3\21\Main.cpp" />
+    <ClCompile Include="libs\clsString.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

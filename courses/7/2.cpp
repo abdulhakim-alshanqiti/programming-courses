@@ -1,7 +1,7 @@
 #include <iostream>
 #include<string>
 #include<iomanip>
-#include "../../Libs/MyLib.h"
+#include "../../libs/MyLib.h"
 using namespace Input;
 using namespace Output;
 using namespace std;

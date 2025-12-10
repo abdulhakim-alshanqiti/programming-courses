@@ -8,7 +8,7 @@ public:
     clsDate StartDate;
     clsDate EndDate;
 
-    clsPeriod(clsDate StartDate, clsDate DateTo)
+    clsPeriod(clsDate StartDate, clsDate EndDate)
     {
         this->StartDate = StartDate;
         this->EndDate = EndDate;
@@ -34,6 +34,21 @@ public:
     {
         return IsOverlapPeriods(*this, Period2);
     }
+    short GetPeriodLengthInDays( bool IncludingLastDay = false) {
+        return  clsDate::GetDifferenceInDays(StartDate, EndDate, IncludingLastDay);
+    }
+    static short GetPeriodLengthInDays(clsPeriod Period, bool IncludingLastDay = false) {
+        return  clsDate::GetDifferenceInDays(Period.StartDate, Period.EndDate, IncludingLastDay);
+    }
+    static bool IsDateInPeriod(clsPeriod Period, clsDate Date) {
+
+        return !(
+            clsDate:: CompareDates(Date, Period.StartDate) == clsDate::enDateCompare::Before ||
+            clsDate::  CompareDates(Date, Period.EndDate) == clsDate::enDateCompare::After
+            );
+
+    }
+
 
     void Print()
     {

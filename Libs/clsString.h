@@ -324,10 +324,10 @@ public:
         while ((pos = S1.find(Delim)) != std::string::npos)
         {
             sWord = S1.substr(0, pos); // store the word   
-            if (sWord != "")
-            {
-                vString.push_back(sWord);
-            }
+            // if (sWord != "")
+            // {
+            vString.push_back(sWord);
+            //}
 
             S1.erase(0, pos + Delim.length());  /* erase() until positon and move to next word. */
         }
@@ -454,7 +454,7 @@ public:
         _Value = ReverseWordsInString(_Value);
     }
 
-    static string FindAndReplace(string S1, string StringToReplace, string sRepalceTo, bool MatchCase = true)
+    static string ReplaceWord(string S1, string StringToReplace, string sRepalceTo, bool MatchCase = true)
     {
 
         vector<string> vString = Split(S1, " ");
@@ -484,9 +484,9 @@ public:
         return JoinString(vString, " ");
     }
 
-    string FindAndReplace(string StringToReplace, string sRepalceTo)
+    string ReplaceWord(string StringToReplace, string sRepalceTo)
     {
-        return FindAndReplace(_Value, StringToReplace, sRepalceTo);
+        return ReplaceWord(_Value, StringToReplace, sRepalceTo);
     }
 
     static string RemovePunctuations(string S1)

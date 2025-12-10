@@ -1,7 +1,7 @@
 #include <string>
 
-#include "../../../Libs/MyLib.h"
-#include "../../../Libs/Date.h"
+#include "../../../libs/MyLib.h"
+#include "../../../libs/Date.h"
 #include<fstream>
 #include<iomanip>
 

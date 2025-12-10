@@ -5,7 +5,7 @@
 
 using namespace std;
 
-#include "../../Libs/MyLib.h"
+#include "../../libs/MyLib.h"
 #include <cstdio>
 using namespace Input;
 using namespace Output;

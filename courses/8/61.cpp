@@ -3,8 +3,8 @@
 #include <string>
 #include <cmath>
 
-#include "../../Libs/MyLib.h"
-#include "../../Libs/Date.h"
+#include "../../libs/MyLib.h"
+#include "../../libs/Date.h"
 #include <cstdio>
 
 using namespace std;

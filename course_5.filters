@@ -158,6 +158,6 @@
     <ClCompile Include="courses\7\Projects\project2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Libs\MyLib.h" />
+    <ClInclude Include="libs\MyLib.h" />
   </ItemGroup>
 </Project>

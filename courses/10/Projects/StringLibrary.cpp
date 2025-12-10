@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
-#include "../../Libs/MyLib.h"
-#include "../../Libs/Date.h"
-#include "../../Libs/clsString.h"
+#include "../../libs/MyLib.h"
+#include "../../libs/Date.h"
+#include "../../libs/clsString.h"
 using namespace Input;
 using namespace Output;
 

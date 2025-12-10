@@ -4,6 +4,7 @@
 #include<iostream>
 #include<string>
 #include "clsString.h"
+#include "MyLib.h"
 
 using namespace std;
 
@@ -89,6 +90,104 @@ public:
 	{
 		cout << DateToString() << endl;
 	}
+	static short DayOrderInYear(short Year, short Month, short Day)
+	{
+		short CountOfDays = 0;
+		for (short i = 1; i < Month; i++) {
+			CountOfDays += NumberOfDaysInMonth(i, Year);
+		}
+
+
+		CountOfDays += Day;
+		return CountOfDays;
+	}
+	static short DayOrderInYear(clsDate Date)
+	{
+		short CountOfDays = 0;
+		for (short i = 1; i < Date.Month; i++) {
+			CountOfDays += NumberOfDaysInMonth(i, Date.Year);
+		}
+
+
+		CountOfDays += Date.Day;
+		return CountOfDays;
+	}
+	static clsDate DateFromDayOrder(short DayOrder, short Year) {
+		short RemainingDays = DayOrder;
+		short MonthDays = 0;
+		clsDate Date;
+		Date.Year = Year;
+
+		while (true) {
+			MonthDays = NumberOfDaysInMonth(Date.Month, Year);
+
+			if (RemainingDays > MonthDays) {
+				RemainingDays -= MonthDays;
+				Date.Month++;
+			}
+			else {
+				Date.Day = RemainingDays;
+				break;
+			}
+		}
+		return Date;
+	}
+
+	static clsDate ReadDate(short Day = 0, short Month = 0, short Year = 0) {
+		clsDate Date;
+
+		while (!IsValidDate(Date)) {
+			Date.Year = (Year == 0) ? Input::ReadPositiveNumber("Enter A Year") : Year;
+			Date.Month = (Month == 0) ? Input::ReadPositiveNumber("Enter A Month") : Month;
+			Date.Day = (Day == 0) ? Input::ReadPositiveNumber("Enter A Day") : Day;
+			if (!IsValidDate(Date))
+				Output::Printl("Please Enter A Valid Date");
+		}
+		return Date;
+	}
+
+	static clsDate ReadDate(clsDate Date) {
+		return ReadDate(Date.Year, Date.Month, Date.Day);
+	}
+	static clsDate ReadDate(string Message) {
+		cout << Message << endl;
+		return ReadDate();
+	}
+	static	clsDate ReadDateString() {
+		clsDate Date;
+		bool DateIsValid = false;
+		do {
+			string DateString =
+				Input::ReadStringWS("Please Enter A day In This Format dd/mm/yyyy ");
+
+			Date = DateFromString(DateString);
+			DateIsValid = IsValidDate(Date);
+			if (!DateIsValid) {
+				Output::Printl("The Date You Entered Isn't Valid, Please Try Again");
+			}
+
+		} while (!DateIsValid);
+
+		return Date;
+	}
+
+
+
+	static clsDate DateFromString(string DateString) {
+		vector<string> vDate = clsString::Split(DateString, "/");
+		return 	clsDate(stoi(vDate[0]), stoi(vDate[1]), stoi(vDate[2]));
+	}
+
+
+	static string DayLongName(short Day) {
+		string arrDaysOfWeek[7] = { "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday" };
+		return arrDaysOfWeek[Day];
+
+	}
+
+
+
+
 
 	static clsDate GetSystemDate()
 	{
@@ -105,37 +204,64 @@ public:
 		return clsDate(Day, Month, Year);
 	}
 
-	static	bool IsValidDate(clsDate Date)
-	{
 
-		if (Date.Day < 1 || Date.Day>31)
-			return false;
+	static bool IsFirstMonthInYear(short Month) {
+		return Month == 1;
+	}
+	static bool IsFirstDayInMonth(short Day) {
+		return Day == 1;
+	}
+	static bool IsDate1BeforeDate2(clsDate Date1, clsDate Date2) {
 
-		if (Date.Month < 1 || Date.Month>12)
-			return false;
-
-		if (Date.Month == 2)
-		{
-			if (isLeapYear(Date.Year))
-			{
-				if (Date.Day > 29)
-					return false;
-			}
-			else
-			{
-				if (Date.Day > 28)
-					return false;
-			}
-		}
-
-		short DaysInMonth = NumberOfDaysInAMonth(Date.Month, Date.Year);
-
-		if (Date.Day > DaysInMonth)
-			return false;
-
-		return true;
+		return (Date1.Year < Date2.Year) ? true : ((Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month ? true : (Date1.Month == Date2.Month ? Date1.Day < Date2.Day : false)) : false);
 
 	}
+
+	static short NumberOfDaysInMonth(short Month, short Year) {
+		if (Month < 1 || Month > 12)
+			return 0;
+
+		short NumberOfDaysInEachMonth[13] = { 0,31,28,31,30,31,30,31,31,30,31,30,31 };
+
+		return	(Month == 2) ? (IsLeapYear(Year) ? 29 : 28) : NumberOfDaysInEachMonth[Month];
+	}
+	static short NumberOfDaysInMonth(clsDate Date) {
+		return NumberOfDaysInMonth(Date.Month, Date.Year);
+	}
+	static short NumberOfDaysInYear(short Year) {
+		return  (IsLeapYear(Year) ? 366 : 365);
+	}
+	static short NumberOfDaysInYear(clsDate Date) {
+		return NumberOfDaysInYear(Date.Year);
+	}
+
+
+	static short NumberOfHoursInMonth(short Month, short Year) {
+		return NumberOfDaysInMonth(Month, Year) * 24;
+	}
+	static int NumberOfMinutesInMonth(short Month, short Year) {
+		return NumberOfHoursInMonth(Month, Year) * 60;
+	}
+	static int NumberOfSecondsInMonth(short Month, short Year) {
+		return NumberOfMinutesInMonth(Month, Year) * 60;
+	}
+	static short NumberOfHoursInYear(short Year) {
+		return NumberOfDaysInYear(Year) * 24;
+	}
+	static int NumberOfMinutesInYear(short Year) {
+		return NumberOfHoursInYear(Year) * 60;
+	}
+	static int NumberOfSecondsInYear(short Year) {
+		return NumberOfMinutesInYear(Year) * 60;
+	}
+
+	static bool IsValidDate(clsDate Date) {
+		return
+			(Date.Year > 0
+				&& (13 > Date.Month > 0)
+				&& NumberOfDaysInMonth(Date) >= Date.Day > 0);
+	}
+
 
 	bool IsValid()
 	{
@@ -152,7 +278,7 @@ public:
 		return  DateToString(*this);
 	}
 
-	static bool isLeapYear(short Year)
+	static bool IsLeapYear(short Year)
 	{
 
 		// if year is divisible by 4 AND not divisible by 100
@@ -161,14 +287,14 @@ public:
 		return (Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0);
 	}
 
-	bool isLeapYear()
+	bool IsLeapYear()
 	{
-		return isLeapYear(_Year);
+		return IsLeapYear(_Year);
 	}
 
 	static short NumberOfDaysInAYear(short Year)
 	{
-		return  isLeapYear(Year) ? 365 : 364;
+		return  IsLeapYear(Year) ? 365 : 364;
 	}
 
 	short NumberOfDaysInAYear()
@@ -213,7 +339,7 @@ public:
 			return  0;
 
 		int days[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
-		return (Month == 2) ? (isLeapYear(Year) ? 29 : 28) : days[Month - 1];
+		return (Month == 2) ? (IsLeapYear(Year) ? 29 : 28) : days[Month - 1];
 
 	}
 
@@ -262,6 +388,16 @@ public:
 		//0:sun, 1:Mon, 2:Tue...etc
 		return (Day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12)) % 7;
 	}
+	static short DayOfWeekOrder(clsDate Date)
+	{
+		short a, y, m;
+		a = (14 - Date.Month) / 12;
+		y = Date.Year - a;
+		m = Date.Month + (12 * a) - 2;
+		// Gregorian:
+		//0:sun, 1:Mon, 2:Tue...etc
+		return (Date.Day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12)) % 7;
+	}
 
 	short DayOfWeekOrder()
 	{
@@ -273,15 +409,6 @@ public:
 		string arrDayNames[] = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
 
 		return arrDayNames[DayOfWeekOrder];
-
-	}
-
-	static string DayShortName(short Day, short Month, short Year)
-	{
-
-		string arrDayNames[] = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
-
-		return arrDayNames[DayOfWeekOrder(Day, Month, Year)];
 
 	}
 
@@ -383,7 +510,7 @@ public:
 		return;
 	}
 
-	static short DaysFromTheBeginingOfTheYear(short Day, short Month, short Year)
+	static short DaysFromTheBeginningOfTheYear(short Day, short Month, short Year)
 	{
 
 
@@ -399,7 +526,7 @@ public:
 		return TotalDays;
 	}
 
-	short DaysFromTheBeginingOfTheYear()
+	 short DaysFromTheBeginningOfTheYear()
 	{
 
 
@@ -449,7 +576,7 @@ public:
 	{
 
 
-		short RemainingDays = Days + DaysFromTheBeginingOfTheYear(_Day, _Month, _Year);
+		short RemainingDays = Days + DaysFromTheBeginningOfTheYear(_Day, _Month, _Year);
 		short MonthDays = 0;
 
 		_Month = 1;
@@ -481,10 +608,7 @@ public:
 
 	}
 
-	static bool IsDate1BeforeDate2(clsDate Date1, clsDate Date2)
-	{
-		return  (Date1.Year < Date2.Year) ? true : ((Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month ? true : (Date1.Month == Date2.Month ? Date1.Day < Date2.Day : false)) : false);
-	}
+
 
 	bool IsDateBeforeDate2(clsDate Date2)
 	{
@@ -953,6 +1077,12 @@ public:
 		DecreaseDateByOneMillennium(*this);
 	}
 
+	static string GetDayLongName(clsDate Date) {
+		return DayLongName(DayOfWeekOrder(Date));
+	}
+	static string GetDayShortName(clsDate Date) {
+		return DayShortName(DayOfWeekOrder(Date));
+	}
 
 	static short IsEndOfWeek(clsDate Date)
 	{

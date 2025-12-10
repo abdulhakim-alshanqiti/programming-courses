@@ -1,6 +1,6 @@
 #include<iostream>
 #include<string>
-#include"../../Libs/MyLib.h"
+#include"../../libs/MyLib.h"
 using namespace std;
 using namespace Output;
 void ChangeValueByRefrence(int& value) {

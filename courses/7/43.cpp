@@ -1,7 +1,7 @@
 #include <iostream>
 #include<string>
 #include<vector>
-#include "../../Libs/MyLib.h"
+#include "../../libs/MyLib.h"
 using namespace Input;
 using namespace std;
 using namespace Strings;

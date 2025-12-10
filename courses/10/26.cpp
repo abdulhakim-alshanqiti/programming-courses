@@ -1,8 +1,8 @@
 #include <iostream>
-#include "../../Libs/MyLib.h"
-#include "../../Libs/Date.h"
-#include "../../Libs/clsPerson.h"
-#include "../../Libs/clsEmployee.h"
+#include "../../libs/MyLib.h"
+#include "../../libs/Date.h"
+#include "../../libs/clsPerson.h"
+#include "../../libs/clsEmployee.h"
 
 using namespace Input;
 using namespace Output;

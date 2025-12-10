@@ -1,6 +1,6 @@
 #include <iostream>
 #include<string>
-#include "../../Libs/MyLib.h"
+#include "../../libs/MyLib.h"
 #include <vector>
 using namespace Input;
 using namespace std;

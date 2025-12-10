@@ -3,8 +3,8 @@
 #include <string>
 #include <cmath>
 
-#include "../../Libs/MyLib.h"
-#include "../../Libs/Date.h"
+#include "../../libs/MyLib.h"
+#include "../../libs/Date.h"
 #include <cstdio>
 
 using namespace std;
@@ -16,7 +16,7 @@ using namespace Date;
 
 
 
-//bool IsDateValid(stDate Date) {
+//bool IsValidDate(stDate Date) {
 //	return
 //		(Date.Year > 0
 //			&& (13 > Date.Month > 0)
@@ -26,11 +26,11 @@ using namespace Date;
 //stDate ReadDate(short Year = 0, short Month = 0, short Day = 0) {
 //	stDate Date;
 //
-//	while (!IsDateValid(Date)) {
+//	while (!IsValidDate(Date)) {
 //		Date.Year = (Year == 0) ? ReadPositiveNumber("Enter A Year") : Year;
 //		Date.Month = (Month == 0) ? ReadPositiveNumber("Enter A Month") : Month;
 //		Date.Day = (Day == 0) ? ReadPositiveNumber("Enter A Day") : Day;
-//		if (!IsDateValid(Date))
+//		if (!IsValidDate(Date))
 //			Printl("Please Enter A Valid Date");
 //	}
 //	return Date;

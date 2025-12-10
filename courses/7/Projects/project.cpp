@@ -3,7 +3,7 @@
 #include<vector>
 #include<fstream>
 #include<iomanip>
-#include "../../../Libs/MyLib.h"
+#include "../../../libs/MyLib.h"
 using namespace Input;
 using namespace std;
 using namespace Strings;

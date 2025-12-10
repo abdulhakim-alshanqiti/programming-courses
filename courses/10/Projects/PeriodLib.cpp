@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../../Libs/clsPeriod.h"
+#include "../../libs/clsPeriod.h"
 
 int main()
 

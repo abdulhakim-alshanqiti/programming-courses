@@ -2,7 +2,7 @@
 #include<string>
 #include<vector>
 #include<fstream>
-#include"../../Libs/MyLib.h"
+#include"../../libs/MyLib.h"
 using namespace Output;
 using namespace std;
 
