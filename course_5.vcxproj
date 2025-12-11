@@ -125,29 +125,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="courses\11\Extensions\Extension3\clsAddNewClientScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsAddNewUserScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsBankClient.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsClientListScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsDeleteClientScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsDeleteUserScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsDepositScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsFindClientScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsFindUserScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsListClientScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsListUsersScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsLoginScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsMainScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsManageUsersScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsPerson.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsTotalBalancesScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsTransactionsScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsUpdateClientScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsUpdateUserScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsUser.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\clsWithdrawScreen.h" />
-    <ClInclude Include="courses\11\Extensions\Extension3\Global.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsAddNewClientScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsAddNewUserScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsBankClient.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsClientListScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsDeleteClientScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsDeleteUserScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsDepositScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsFindClientScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsFindUserScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsListClientScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsListUsersScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsLoginRegisterScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsLoginScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsMainScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsManageUsersScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsPerson.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsTotalBalancesScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsTransactionsScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsTransferLogListScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsTransferScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsUpdateClientScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsUpdateUserScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsUser.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\clsWithdrawScreen.h" />
+    <ClInclude Include="courses\11\Extensions\Extension8\Global.h" />
     <ClInclude Include="libs\clsDate.h" />
     <ClInclude Include="libs\clsInputValidate.h" />
     <ClInclude Include="libs\clsPeriod.h" />
@@ -155,7 +158,7 @@
     <ClInclude Include="libs\MyLib.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="courses\11\Extensions\Extension3\Main.cpp" />
+    <ClCompile Include="courses\11\Extensions\Extension8\Main.cpp" />
     <ClCompile Include="libs\clsString.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
